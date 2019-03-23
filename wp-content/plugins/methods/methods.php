@@ -9,8 +9,6 @@ Author URI: http://phil.ewels.co.uk
 License: MIT
 */
 
-require_once('blocks/register_blocks.php');
-
 //////////////////////////
 // Custom Post Type setup
 //////////////////////////
@@ -47,24 +45,23 @@ function method_post_type() {
         # Gutenberg editor config stuff from here on
         'show_in_rest' => true,
         'template' => array(
-            array( 'methods/usewhen'),
-            array( 'core/paragraph', array('placeholder' => 'Short one-sentence introduction')),
-            array( 'core/heading', array('content' => 'Sample Requirements')),
-            array( 'core/list'),
-            array( 'core/heading', array('content' => 'How to evaluate the sample quality')),
-            array( 'core/paragraph', array('content' => 'We check your samples upon arrival, however we still require our users to do their own QC steps before sending samples. For this library prep method, we require:')),
-            array( 'core/list'),
-            array( 'core/paragraph', array('content' => 'If you are not able to carry out these steps, or your samples are below the required thresholds, please get in touch.')),
-            array( 'core/heading', array('content' => 'What we do with your samples')),
-            array( 'core/paragraph'),
-            array( 'core/heading', array('content' => 'Library Preparation', 'level' => '3')),
-            array( 'core/paragraph'),
-            array( 'core/heading', array('content' => 'Library QC and Sequencing', 'level' => '3')),
-            array( 'core/paragraph'),
-            array( 'core/heading', array('content' => 'Expected Results')),
-            array( 'core/paragraph'),
-            array( 'core/heading', array('content' => 'Bioinformatics')),
-            array( 'core/paragraph'),
+            array('core/paragraph', array('placeholder' => 'Short one-sentence introduction')),
+            array('core/heading', array('content' => 'Sample Requirements')),
+            array('core/list'),
+            array('core/heading', array('content' => 'How to evaluate the sample quality')),
+            array('core/paragraph', array('content' => 'We check your samples upon arrival, however we still require our users to do their own QC steps before sending samples. For this library prep method, we require:')),
+            array('core/list'),
+            array('core/paragraph', array('content' => 'If you are not able to carry out these steps, or your samples are below the required thresholds, please get in touch.')),
+            array('core/heading', array('content' => 'What we do with your samples')),
+            array('core/paragraph'),
+            array('core/heading', array('content' => 'Library Preparation', 'level' => '3')),
+            array('core/paragraph'),
+            array('core/heading', array('content' => 'Library QC and Sequencing', 'level' => '3')),
+            array('core/paragraph'),
+            array('core/heading', array('content' => 'Expected Results')),
+            array('core/paragraph'),
+            array('core/heading', array('content' => 'Bioinformatics')),
+            array('core/paragraph'),
         ),
     );
     register_post_type('methods', $args);
