@@ -1,6 +1,6 @@
 # Ignore all plugins except the ones we wrote
 wp-content/plugins/*
-!wp-content/plugins/libpreps/
+!wp-content/plugins/methods/
 
 # Ignore all thems except the one we wrote
 wp-content/themes/*

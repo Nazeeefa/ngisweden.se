@@ -3,15 +3,14 @@ var registerBlockType = wp.blocks.registerBlockType;
 var RichText = wp.editor.RichText;
 var InnerBlocks = wp.editor.InnerBlocks;
 
-registerBlockType( 'libpreps/usewhen', {
+registerBlockType( 'methods/usewhen', {
     title: 'Use when',
     icon: 'editor-help',
-    category: 'libpreps',
+    category: 'methods',
     attributes: {
         content: {
             type: 'string',
-            source: 'html',
-            selector: 'p',
+            source: 'html'
         }
     },
     edit: function( props ) {
@@ -22,8 +21,7 @@ registerBlockType( 'libpreps/usewhen', {
         return [
             el( 'div', { className: props.className },
                 el( InnerBlocks, {
-                    className: 'libprepclassname',
-                    // props.className,
+                    className: props.className,
                     onChange: onChangeContent,
                     value: content,
                     template: [
@@ -39,7 +37,6 @@ registerBlockType( 'libpreps/usewhen', {
         return [
             el( 'div', { className: props.className },
                 el( InnerBlocks.Content, {
-                    tagName: 'p',
                     className: props.className,
                     value: content
                 } ),

@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: Library Preps
+Plugin Name: NGI Methods
 Plugin URI: https://github.com/NationalGenomicsInfrastructure/ngisweden.se
 Description: Plugin to handle administration, submission and display of library prep methods on the NGI website.
 Version: 1.0
@@ -14,18 +14,18 @@ require_once('blocks/register_blocks.php');
 //////////////////////////
 // Custom Post Type setup
 //////////////////////////
-function libprep_post_type() {
+function method_post_type() {
     $labels = array(
-        'name' => 'Library Preps',
-        'singular_name' => 'Library Prep',
+        'name' => 'Methods',
+        'singular_name' => 'Method',
         'add_new' => 'Add New',
-        'add_new_item' => 'Add New Library Prep',
-        'edit_item' => 'Edit Library Prep',
-        'new_item' => 'New Library Prep',
-        'view_item' => 'View Library Prep',
-        'search_items' => 'Search Library Preps',
-        'not_found' => 'No Library Preps found',
-        'not_fount_in_trash' => 'No Library Preps found in Trash'
+        'add_new_item' => 'Add New Method',
+        'edit_item' => 'Edit Method',
+        'new_item' => 'New Method',
+        'view_item' => 'View Method',
+        'search_items' => 'Search Methods',
+        'not_found' => 'No Methods found',
+        'not_fount_in_trash' => 'No Methods found in Trash'
     );
     $args = array(
         'labels' => $labels,
@@ -47,7 +47,7 @@ function libprep_post_type() {
         # Gutenberg editor config stuff from here on
         'show_in_rest' => true,
         'template' => array(
-            array( 'libpreps/usewhen'),
+            array( 'methods/usewhen'),
             array( 'core/paragraph', array('placeholder' => 'Short one-sentence introduction')),
             array( 'core/heading', array('content' => 'Sample Requirements')),
             array( 'core/list'),
@@ -67,12 +67,12 @@ function libprep_post_type() {
             array( 'core/paragraph'),
         ),
     );
-    register_post_type('libpreps', $args);
+    register_post_type('methods', $args);
 }
-add_action('init', 'libprep_post_type');
+add_action('init', 'method_post_type');
 
 // Set up the taxonomy (categories)
-function create_libprep_tax() {
+function create_method_tax() {
     $cat_labels = array(
         'name'                       => _x( 'Applications', 'Taxonomy General Name', 'text_domain' ),
         'singular_name'              => _x( 'Application', 'Taxonomy Singular Name', 'text_domain' ),
@@ -105,7 +105,7 @@ function create_libprep_tax() {
         'show_in_rest'               => true,
         'show_tagcloud'              => true,
     );
-    register_taxonomy( 'applications', 'libpreps', $cat_args );
+    register_taxonomy( 'applications', 'methods', $cat_args );
 
     $keyword_labels = array(
         'name'                       => __( 'Associated Keywords' ),
@@ -133,6 +133,6 @@ function create_libprep_tax() {
         'update_count_callback' => '_update_post_term_count',
         'query_var'             => true,
     );
-    register_taxonomy('keywords', 'libpreps', $keyword_args);
+    register_taxonomy('keywords', 'methods', $keyword_args);
 }
-add_action( 'init', 'create_libprep_tax', 0 );
+add_action( 'init', 'create_method_tax', 0 );
