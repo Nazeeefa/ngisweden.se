@@ -133,3 +133,68 @@ function create_method_tax() {
     register_taxonomy('keywords', 'methods', $keyword_args);
 }
 add_action( 'init', 'create_method_tax', 0 );
+
+
+// Add custom fields to the Applications taxonomy
+function applications_taxonomy_custom_fields($tag) {
+    $term_meta = get_option( "application_page_".$tag->term_id ); ?>
+    <tr class="form-field">
+        <th scope="row" valign="top">
+            <label for="application_page"><?php _e('Application page'); ?></label>
+        </th>
+        <td>
+            <?php wp_dropdown_pages(array(
+                'selected' => $term_meta['application_page'],
+                'id' => 'application_page',
+                'name' => 'application_page',
+                'show_option_none'  => '[ choose a page ]',
+                'option_none_value' => 0,
+            )); ?>
+            <p><?php _e('Used so that we can write more than just a short description box.'); ?></p>
+        </td>
+    </tr>
+    <tr class="form-field">
+        <th scope="row" valign="top">
+            <label for="application_icon"><?php _e('Application Icon'); ?></label>
+        </th>
+        <td>
+            <input type="text" name="application_icon" id="application_icon" size="25" style="width:60%;" value="<?php echo $term_meta['application_icon'] ? $term_meta['application_icon'] : ''; ?>"><br />
+            <p><?php _e('Find an icon and click + copy the text associated into the above box.'); ?>
+            <a href="<?php echo get_template_directory_uri() ?>/includes/icons/" target="_blank"><?php _e('Click here to find icon URLs'); ?></a></p>
+        </td>
+    </tr>
+    <?php
+}
+// A callback function to save our extra taxonomy field(s)
+function save_applications_tax_custom_fields( $term_id ) {
+    $term_meta = get_option( "application_icon_".$term_id );
+    if ( isset( $_POST['application_page'] ) ) {
+        $term_meta['application_page'] = $_POST['application_page'];
+    }
+    if ( isset( $_POST['application_icon'] ) ) {
+        $term_meta['application_icon'] = $_POST['application_icon'];
+    }
+    update_option( "application_page_".$term_id, $term_meta );
+}
+add_action( 'applications_add_form_fields', 'applications_taxonomy_custom_fields', 10, 2 );
+add_action( 'applications_edit_form_fields', 'applications_taxonomy_custom_fields', 10, 2 );
+add_action( 'edited_applications', 'save_applications_tax_custom_fields', 10, 2 );
+
+// Show this in the table of applications
+function applications_pageurl_column_header( $columns ){
+    $columns['header_name'] = 'Application Page';
+    return $columns;
+}
+add_filter( "manage_edit-applications_columns", 'applications_pageurl_column_header', 10);
+
+function applications_pageurl_column_content( $value, $column_name, $tax_id ){
+    $term_meta = get_option( "application_page_".$tax_id );
+    if(isset($term_meta['application_page'])){
+        $ptitle = get_the_title($term_meta['application_page']);
+        $purl = get_page_link($term_meta['application_page']);
+        echo '<a href="'.$purl.'">'.$ptitle.'</a>';
+    } else {
+        echo '-';
+    }
+}
+add_action( "manage_applications_custom_column", 'applications_pageurl_column_content', 10, 3);

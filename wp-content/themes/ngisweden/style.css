@@ -16,7 +16,7 @@ body {
     height: 48px;
     width: 150px;
 }
-@media all and (min-width: 600px) {
+@media all and (min-width: 992px) {
     .admin-bar nav.fixed-top {
         top: 32px;
     }
@@ -91,4 +91,65 @@ footer {
 }
 .h1, .h2, .h3, .h4, .h5, .h6, h1, h2, h3, h4, h5, h6 {
     margin-top: 2rem;
+}
+
+
+
+.homepage-applications {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 1.5rem 0;
+}
+.homepage-applications .homepage-application {
+    width: 100%;
+}
+.homepage-applications .homepage-application a {
+    display: block;
+    background-color: #e7ecf7;
+    padding: 1rem;
+    margin: 0.5rem;
+    border-radius: 3rem;
+    font-size: 21px;
+    color: #183c55;
+    line-height: 3rem;
+    text-decoration: none;
+    -webkit-transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
+}
+.homepage-applications .homepage-application a:hover,
+.homepage-applications .homepage-application a:focus,
+.homepage-applications .homepage-application a:active {
+    background-color: #c8d3ea;
+}
+.homepage-applications .homepage-application a .application-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 4rem;
+    float: left;
+    margin: -0.5rem;
+    margin-right: 1.5rem;
+    display: block;
+    background-color: #5886e0;
+    overflow: hidden;
+    text-align: center;
+    display: flex;
+}
+.homepage-applications .homepage-application a .application-icon img {
+    max-width: 60%;
+    max-height: 60%;
+    margin: auto;
+}
+@media all and (min-width: 600px) {
+    .homepage-applications .homepage-application {
+        width: 50%;
+    }
+    .homepage-applications .homepage-application:nth-child(odd) a {
+        text-align: right;
+    }
+    .homepage-applications .homepage-application:nth-child(odd) a .application-icon {
+        float: right;
+        margin: -0.5rem;
+        margin-left: 1.5rem;
+    }
 }
