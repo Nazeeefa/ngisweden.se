@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700');
+
+
+.edit-post-visual-editor.editor-styles-wrapper,
+.edit-post-visual-editor.editor-styles-wrapper .editor-post-title .editor-post-title__block .editor-post-title__input {
+    font-family: 'Roboto', sans-serif;
+    color: #183c55;
+}
+
+.wp-block-libpreps-usewhen {
+    border: 1px solid #c2d1e7;
+    border-radius: 5px;
+    padding: 0 20px;
+    background-color: #e5ebf3;
+}
+.wp-block-libpreps-usewhen .editor-styles-wrapper,
+.wp-block-libpreps-usewhen .editor-styles-wrapper p {
+    font-size: 14px;
+}
