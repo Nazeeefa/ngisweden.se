@@ -158,15 +158,5 @@ function remove_dashboard_widgets() {
 }
 add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
 
-// Make a nice NGI-colour theme for the admin pages
-wp_admin_css_color (
-  'ngisweden',
-  __('NGI Sweden'),
-  get_stylesheet_directory_uri()."/admin_theme.css",
-  array('#26292c', '#363b3f', '#69a8bb', '#4886e7')
-);
-// Force everyone to use it
-function change_admin_color() { return 'ngisweden'; }
-add_filter('get_user_option_admin_color','change_admin_color');
 // Don't let people have any choice! muwahahahaha
 remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
