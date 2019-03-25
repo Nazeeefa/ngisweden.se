@@ -27,7 +27,7 @@
       }
       echo '<div class="homepage-application">
         <a href="'.$app_url.'" class="app-link">
-          <span class="application-icon"><img src="'.$application_icon.'"></span>
+          <span class="application-icon">'.file_get_contents($application_icon).'</span>
           '.$application->name.'
         </a>
       </div>';

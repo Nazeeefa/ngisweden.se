@@ -221,10 +221,16 @@ footer {
     text-align: center;
     display: flex;
 }
-.homepage-applications .homepage-application a .application-icon img {
-    max-width: 60%;
-    max-height: 60%;
+.homepage-applications .homepage-application a .application-icon svg {
+    width: 40px;
+    height: 40px;
     margin: auto;
+    fill: #e8ecf6;
+}
+.homepage-applications .homepage-application a:hover svg,
+.homepage-applications .homepage-application a:focus svg,
+.homepage-applications .homepage-application a:active svg {
+    fill: #ffffff;
 }
 @media all and (min-width: 600px) {
     .homepage-applications .homepage-application {
