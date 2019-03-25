@@ -2,8 +2,9 @@
 
 <?php echo do_shortcode('[image-carousel]'); ?>
 
-<div class="container main-page">
+<div class="container main-page" id="front-page-container">
   <div class="homepage-applications">
+    <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?>
     <?php
     $applications = get_terms( array(
       'taxonomy' => 'applications',

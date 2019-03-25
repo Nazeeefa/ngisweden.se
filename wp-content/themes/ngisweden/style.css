@@ -5,6 +5,9 @@ body {
     padding-top: 60px;
     color: #183c55;
 }
+body.admin-bar {
+    padding-top: 46px;
+}
 
 #wpadminbar {
     position: fixed;
@@ -50,34 +53,77 @@ body {
         text-transform: uppercase;
         margin-bottom: 3px;
     }
+}
 
-    .navbar .navbar-search {
-        width: 60px;
-        -webkit-transition: width 0.4s ease-in-out, border 0.2s ease-in-out;
-        transition: width 0.4s ease-in-out, border 0.2s ease-in-out;
-        border: none;
-        background-color: transparent;
-        box-shadow: none;
-        border-bottom: 2px solid transparent;
-        border-radius: 0;
-        margin-left: 0.5rem;
-    }
-    .navbar .navbar-search:focus {
-        width: 200px;
-        border-bottom: 2px solid #4986e7;
-    }
+
+#main_navbar .wpdreams_asl_container .probox {
+    border: none;
+    border-radius: 0;
+    background-color: transparent;
+    box-shadow: none;
+    padding-left: 0;
+    margin-left: 0;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
-.navbar .navbar-search {
-    font-family: 'Roboto', sans-serif, 'Font Awesome\ 5 Free';
-    font-weight: 900;
+#main_navbar .wpdreams_asl_container .probox .proinput {
+    padding: 0;
+    margin: 0;
+    -webkit-transition: padding 0.4s ease-in-out, margin 0.2s ease-in-out;
+    transition: padding 0.4s ease-in-out, margin 0.2s ease-in-out;
 }
-.navbar .navbar-search:focus {
+#main_navbar .wpdreams_asl_container .probox form input {
+    font-size: 1rem;
+    font-family: 'Roboto', sans-serif;
     font-weight: 400;
+    line-height: 1.5rem;
+    color: #183c55;
+    border-bottom: 2px solid transparent !important;
+    border-radius: 0 !important;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
 }
-.navbar .navbar-search:focus::-webkit-input-placeholder { color:transparent; }
-.navbar .navbar-search:focus:-moz-placeholder { color:transparent; }
-.navbar .navbar-search:focus::-moz-placeholder { color:transparent; }
-.navbar .navbar-search:focus:-ms-input-placeholder { color:transparent; }
+#main_navbar .wpdreams_asl_container .probox form input:focus {
+    border-color: #4986e7 !important;
+}
+#main_navbar .wpdreams_asl_container .probox form input::-webkit-input-placeholder,
+#main_navbar .wpdreams_asl_container .probox form input:-moz-placeholder,
+#main_navbar .wpdreams_asl_container .probox form input::-moz-placeholder,
+#main_navbar .wpdreams_asl_container .probox form input:-ms-input-placeholder {
+    color:transparent;
+}
+#main_navbar .wpdreams_asl_container .probox .prosettings,
+#main_navbar .wpdreams_asl_container .probox .proloading,
+#main_navbar .wpdreams_asl_container .probox .proclose {
+    display: none !important;
+}
+@media all and (min-width: 992px) {
+    #main_navbar div[id*='ajaxsearchlite'].wpdreams_asl_container {
+        width: 40px;
+        -webkit-transition: width 0.4s ease-in-out;
+        transition: width 0.4s ease-in-out;
+    }
+    #main_navbar div[id*='ajaxsearchlite'].wpdreams_asl_container.ngifocus {
+        width: 400px;
+    }
+    #main_navbar .wpdreams_asl_container .probox {
+        width: 40px;
+    }
+    #main_navbar .wpdreams_asl_container.ngifocus .probox {
+        width: 400px;
+    }
+    #main_navbar .wpdreams_asl_container.ngifocus .probox .proinput {
+        padding: 0 5px;
+        margin: 0 0 0 10px;
+    }
+    #main_navbar .wpdreams_asl_container .probox form input {
+        width: 0px;
+    }
+    #main_navbar .wpdreams_asl_container.ngifocus .probox form input {
+        width: 350px;
+    }
+}
+
 
 
 footer {
@@ -104,18 +150,56 @@ footer {
 .homepage-applications .homepage-application {
     width: 100%;
 }
-.homepage-applications .homepage-application a {
+.homepage-applications .homepage-application a,
+#front-page-container .homepage-applications .wpdreams_asl_container .probox {
     display: block;
     background-color: #e7ecf7;
     padding: 1rem;
-    margin: 0.5rem;
+    margin: 0.5rem 0;
     border-radius: 3rem;
+    -webkit-transition: background-color 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
+    border: none;
+}
+.homepage-applications .homepage-application a,
+#front-page-container .homepage-applications .wpdreams_asl_container .probox form input {
     font-size: 21px;
     color: #183c55;
     line-height: 3rem;
     text-decoration: none;
-    -webkit-transition: background-color 0.1s ease-in-out;
-    transition: background-color 0.1s ease-in-out;
+}
+#front-page-container .homepage-applications .wpdreams_asl_container .probox {
+    height: 48px;
+}
+#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier,
+#front-page-container .homepage-applications div.asl_m .probox .proclose svg,
+#front-page-container .homepage-applications div.asl_w .probox div.prosettings {
+    background-image: none;
+    border: 0;
+    border-radius: 0 0 0 0;
+    box-shadow: none;
+}
+#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier {
+    float: left;
+}
+#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier,
+#front-page-container .homepage-applications div.asl_w .probox .proloading,
+#front-page-container .homepage-applications div.asl_w .probox .proclose,
+#front-page-container .homepage-applications div.asl_w .probox .prosettings {
+    width: 48px;
+    height: 48px;
+}
+#front-page-container .homepage-applications div.asl_w .probox .proclose svg {
+    background: #4a89bf;
+}
+#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier .innericon svg {
+    width: 35px;
+}
+#front-page-container .homepage-applications .wpdreams_asl_container .probox .proinput {
+    width: calc(100% - 120px);
+}
+#front-page-container .homepage-applications .wpdreams_asl_container .probox .proinput input {
+    height: 48px;
 }
 .homepage-applications .homepage-application a:hover,
 .homepage-applications .homepage-application a:focus,
@@ -146,6 +230,10 @@ footer {
     }
     .homepage-applications .homepage-application:nth-child(odd) a {
         text-align: right;
+        margin-right: 0.5rem;
+    }
+    .homepage-applications .homepage-application:nth-child(even) a {
+        margin-left: 0.5rem;
     }
     .homepage-applications .homepage-application:nth-child(odd) a .application-icon {
         float: right;

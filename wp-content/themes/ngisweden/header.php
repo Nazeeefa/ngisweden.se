@@ -13,7 +13,7 @@
     <?php wp_head(); ?>
   </head>
   <body <?php body_class('ngisweden'); ?>>
-    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light shadow-sm main-nav-nav">
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light bg-light shadow-sm main-nav-nav" id="main_navbar">
       <div class="container">
         <a class="navbar-brand" href="<?php echo home_url( '/' ); ?>">
           <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/NGI-logo.svg" height="95" width="300" class="navbar-logo" alt="NGI logo" />
@@ -35,10 +35,8 @@
             'walker'          => new bs4navwalker()
           ]);
           ?>
-          <form class="form-inline">
-            <a class="btn btn-primary new-order-btn" href="https://ngisweden.scilifelab.se/">New Order</a>
-            <input class="form-control navbar-search" type="search" aria-label="Search" placeholder="&#xF002;">
-          </form>
+          <a class="btn btn-primary new-order-btn" id="menu-main-order-btn" href="https://ngisweden.scilifelab.se/">New Order</a>
+          <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?>
         </div>
       </div>
     </nav>
