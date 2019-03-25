@@ -134,6 +134,15 @@ function ngisweden_admin_menu_media_down() {
 add_filter( 'custom_menu_order', '__return_true' );
 add_filter( 'menu_order', 'ngisweden_admin_menu_media_down' );
 
+// Remove certain pages from the menu
+function my_remove_menus() {
+    remove_submenu_page('themes.php', 'themes.php' ); // Theme chooser
+    remove_submenu_page('themes.php', 'theme-editor.php' ); // Theme editor
+    remove_submenu_page('plugins.php', 'plugin-editor.php' ); // Plugin editor
+    remove_submenu_page('options-general.php', 'options-discussion.php' ); // Discussion
+}
+add_action( 'admin_menu', 'my_remove_menus', 999 );
+
 // Remove the annoying boxes from the dashboard index page
 function remove_dashboard_widgets() {
     // remove_meta_box( 'dashboard_right_now', 'dashboard', 'normal' );   // At a Glance
