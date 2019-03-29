@@ -1,4 +1,10 @@
 jQuery(function($) {
+
+    // Enable bootstrap tooltips
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    });
+
     // Override the nav search bar click event
     $('#main_navbar .wpdreams_asl_container .probox .promagnifier').click(function(e){
         e.preventDefault();

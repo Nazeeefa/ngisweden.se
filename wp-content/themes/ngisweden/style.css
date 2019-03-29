@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -261,8 +261,15 @@ footer {
     }
 }
 
-
 .ngisweden-application-methods {
     margin-bottom: 1.5rem;
     font-size: 80%;
+}
+.methods-lead {
+    font-size: 1.25rem;
+    font-weight: 300;
+    border-left: 5px solid #d4e1f5;
+    background-color: #f0f4f9;
+    margin: 1rem 0 2rem;
+    padding: 0.5rem 1rem;
 }
