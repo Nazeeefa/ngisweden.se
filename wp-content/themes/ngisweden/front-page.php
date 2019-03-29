@@ -14,20 +14,22 @@
     foreach($applications as $application){
       $app_url = get_term_link($application->slug, 'applications');
       $term_meta = get_option( "application_page_".$application->term_id );
-      $application_icon = get_stylesheet_directory_uri().'/includes/icons/fontawesome-svgs/solid/flask.svg';
+      $application_icon = get_stylesheet_directory().'/includes/icons/fontawesome-svgs/solid/flask.svg';
       if(isset($term_meta['application_icon'])){
-        $a_icon = get_stylesheet_directory_uri().'/'.$term_meta['application_icon'];
-        if(file_exists($a_icon)){
+        $a_icon = get_stylesheet_directory().'/'.$term_meta['application_icon'];
+        if(file_exists($a_icon) && is_file($a_icon)){
           $application_icon = $a_icon;
         }
       }
       if(isset($term_meta['application_page'])){
-        $app_tooltip = get_the_excerpt($term_meta['application_page']);
+        if(strlen(trim(get_the_excerpt($term_meta['application_page'])))){
+          $app_tooltip = 'data-toggle="tooltip" data-delay=\'{ "show": 1000, "hide": 0 }\' title="'.get_the_excerpt($term_meta['application_page']).'"';
+        }
       } else {
-        $app_tooltip = $application->name;
+        $app_tooltip = '';
       }
       echo '<div class="homepage-application">
-        <a href="'.$app_url.'" class="app-link" data-toggle="tooltip" data-delay=\'{ "show": 1000, "hide": 0 }\' title="'.$app_tooltip.'">
+        <a href="'.$app_url.'" class="app-link" '.$app_tooltip.'>
           <span class="application-icon">'.file_get_contents($application_icon).'</span>
           '.$application->name.'
         </a>

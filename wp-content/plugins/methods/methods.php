@@ -179,6 +179,7 @@ function save_applications_tax_custom_fields( $term_id ) {
 add_action( 'applications_add_form_fields', 'applications_taxonomy_custom_fields', 10, 2 );
 add_action( 'applications_edit_form_fields', 'applications_taxonomy_custom_fields', 10, 2 );
 add_action( 'edited_applications', 'save_applications_tax_custom_fields', 10, 2 );
+add_action( 'create_applications', 'save_applications_tax_custom_fields', 10, 2 );
 
 // Show this in the table of applications
 function applications_pageurl_column_header( $columns ){
