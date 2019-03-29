@@ -21,10 +21,9 @@
           $application_icon = $a_icon;
         }
       }
-      if(isset($term_meta['application_page'])){
-        if(strlen(trim(get_the_excerpt($term_meta['application_page'])))){
-          $app_tooltip = 'data-toggle="tooltip" data-delay=\'{ "show": 1000, "hide": 0 }\' title="'.get_the_excerpt($term_meta['application_page']).'"';
-        }
+      $app_description = trim(strip_tags(term_description($application->term_id, 'applications')));
+      if($app_description && strlen($app_description)){
+        $app_tooltip = 'data-toggle="tooltip" data-delay=\'{ "show": 1000, "hide": 0 }\' title="'.$app_description.'"';
       } else {
         $app_tooltip = '';
       }

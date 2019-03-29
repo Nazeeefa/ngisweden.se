@@ -106,10 +106,6 @@ function ngisweden_guten_block_editor_assets() {
 }
 add_action('enqueue_block_editor_assets', 'ngisweden_guten_block_editor_assets');
 
-// Enable excerpts for pages
-add_post_type_support('page', 'excerpt');
-
-
 // Clean up the admin interface
 
 // We don't have comments on this site, so remove it

@@ -7,19 +7,20 @@
   $taxonomy = get_queried_object();
   $term_meta = get_option( "application_page_".$taxonomy->term_id );
   $page_title = $taxonomy->name;
-  $page_excerpt = '';
+  $page_intro = '';
+  $app_description = trim(strip_tags(term_description($taxonomy->term_id, 'applications')));
+  if($app_description && strlen($app_description)){
+    $page_intro = '<p class="methods-lead">'.$app_description.'</p>';
+  }
   $page_contents = '';
   // Get title and contents from the linked WP Page, if we have one
   if($term_meta && isset($term_meta['application_page'])){
     $app_page = get_post($term_meta['application_page']);
     $page_title = $app_page->post_title;
-    if(strlen(trim(get_the_excerpt($app_page)))){
-      $page_excerpt = '<p class="methods-lead">'.get_the_excerpt($app_page).'</p>';
-    }
     $page_contents = $app_page->post_content;
   }
   echo '<h1>'.$page_title.'</h1>';
-  echo $page_excerpt;
+  echo $page_intro;
   // Loop through the methods in this application and show snippets
   if (have_posts()) {
     echo '<div class="ngisweden-application-methods row">';
