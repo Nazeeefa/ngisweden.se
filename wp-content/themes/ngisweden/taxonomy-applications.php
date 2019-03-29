@@ -13,7 +13,7 @@
   if($term_meta && isset($term_meta['application_page'])){
     $app_page = get_post($term_meta['application_page']);
     $page_title = $app_page->post_title;
-    $page_excerpt = get_the_excerpt($app_page);
+    $page_excerpt = '<p class="lead">'.get_the_excerpt($app_page).'</p>';
     $page_contents = $app_page->post_content;
   }
   echo '<h1>'.$page_title.'</h1>';
