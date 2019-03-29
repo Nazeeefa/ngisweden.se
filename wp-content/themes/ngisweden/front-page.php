@@ -12,16 +12,10 @@
     ) );
 
     foreach($applications as $application){
-      $application_icon = get_stylesheet_directory_uri().'/includes/fontawesome-svgs/solid/flask.svg';
+      $app_url = get_term_link($application->slug, 'applications');
       $term_meta = get_option( "application_page_".$application->term_id );
-      if(isset($term_meta['application_page'])){
-        $app_url = get_page_link($term_meta['application_page']);
-      } else {
-        $app_url = get_term_link($application->slug, 'applications');
-      }
       if(isset($term_meta['application_icon'])){
         $application_icon = get_stylesheet_directory_uri().'/'.$term_meta['application_icon'];
-
       } else {
         $application_icon = get_stylesheet_directory_uri().'/includes/icons/fontawesome-svgs/solid/flask.svg';
       }
