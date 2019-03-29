@@ -160,7 +160,7 @@ function applications_taxonomy_custom_fields($tag) {
         <td>
             <input type="text" name="application_icon" id="application_icon" size="25" style="width:60%;" value="<?php echo $term_meta['application_icon'] ? $term_meta['application_icon'] : ''; ?>"><br />
             <p><?php _e('Find an icon and click + copy the text associated into the above box.'); ?>
-            <a href="<?php echo get_template_directory_uri() ?>/includes/icons/" target="_blank"><?php _e('Click here to find icon URLs'); ?></a></p>
+            <a href="<?php echo get_template_directory_uri() ?>/includes/icons/index.php" target="_blank"><?php _e('Click here to find icon URLs'); ?></a></p>
         </td>
     </tr>
     <?php
