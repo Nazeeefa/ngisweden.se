@@ -29,10 +29,10 @@
           <h5 class="card-title">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h5>
-          <div class="card-text">
-            <?php the_excerpt(); ?>
-          </div>
-          <a href="<?php the_permalink(); ?>" class="btn btn-primary">Read more</a>
+          <p class="card-text"><?php echo strip_tags(get_the_excerpt()); ?></p>
+        </div>
+        <div class="card-footer">
+          <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-sm">Read more</a>
         </div>
       </div>
       <?php
