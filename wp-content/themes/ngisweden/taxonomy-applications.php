@@ -62,6 +62,21 @@
   if (have_posts()) {
     while (have_posts()) {
       the_post();
+
+      // Only show methods that are directly this application (not child applications)
+      $method_applications = get_the_terms(get_the_ID(), 'applications');
+      $this_application = false;
+      foreach($method_applications as $appl){
+        if($appl->term_id == $taxonomy->term_id){
+          $this_application = true;
+          break;
+        }
+      }
+      if(!$this_application){
+        continue;
+      }
+
+      // Show the method card
       $postcounter++;
       if($postcounter % 3 == 0){
         echo '<div class="ngisweden-application-methods card-deck">';
