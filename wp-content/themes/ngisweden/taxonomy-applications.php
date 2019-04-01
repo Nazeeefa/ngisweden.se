@@ -23,26 +23,30 @@
   echo $page_intro;
   // Loop through the methods in this application and show snippets
   if (have_posts()) {
-    echo '<div class="ngisweden-application-methods row">';
     while (have_posts()) {
       the_post();
+      if($wp_query->current_post % 3 == 0){
+        echo '<div class="ngisweden-application-methods card-deck">';
+      }
       ?>
-      <div class="col-sm-4">
-        <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">
-              <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-            </h5>
-            <p class="card-text"><?php echo strip_tags(get_the_excerpt()); ?></p>
-          </div>
-          <div class="card-footer">
-            <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-sm">Read more</a>
-          </div>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+          </h5>
+          <?php if(has_excerpt()) {
+            echo '<p class="card-text">'.strip_tags(get_the_excerpt()).'</p>';
+          } ?>
+        </div>
+        <div class="card-footer">
+          <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-sm">Read more</a>
         </div>
       </div>
       <?php
+      if($wp_query->current_post % 3 == 2){
+        echo '</div>';
+      }
     }
-    echo '</div>';
   }
   echo $page_contents;
   ?>
