@@ -36,6 +36,6 @@ function create_method_tax_keywords() {
         'update_count_callback'      => '_update_post_term_count',
         'query_var'                  => true,
     );
-    register_taxonomy('keywords', 'methods', $keyword_args);
+    register_taxonomy('method_keywords', 'methods', $keyword_args);
 }
 add_action( 'init', 'create_method_tax_keywords', 0 );

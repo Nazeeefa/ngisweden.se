@@ -38,6 +38,6 @@ function create_method_tax_seqtype() {
         'show_in_rest'               => true,
         'show_tagcloud'              => true,
     );
-    register_taxonomy( 'sequencing types', 'methods', $cat_args );
+    register_taxonomy( 'sequencing_type', 'methods', $cat_args );
 }
 add_action( 'init', 'create_method_tax_seqtype', 0 );

@@ -283,3 +283,6 @@ footer {
     margin: 1rem 0 2rem;
     padding: 0.5rem 1rem;
 }
+.method-keyword {
+    font-size: 11px;
+}

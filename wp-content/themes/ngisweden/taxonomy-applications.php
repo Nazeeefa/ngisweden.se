@@ -34,9 +34,27 @@
           <h5 class="card-title">
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h5>
-          <?php if(has_excerpt()) {
+          <?php
+          // Excerpt intro text
+          if(has_excerpt()) {
             echo '<p class="card-text">'.strip_tags(get_the_excerpt()).'</p>';
-          } ?>
+          }
+          // General keywords
+          $method_keywords = get_the_terms(null, 'method_keywords');
+          if ($method_keywords && !is_wp_error($method_keywords)){
+            foreach($method_keywords as $kw){
+              echo '<a href="'.get_term_link($kw->slug, 'method_keywords').'" rel="tag" class="badge badge-secondary method-keyword '.$kw->slug.'">'.$kw->name.'</a> ';
+            }
+          }
+          // Sequencing type
+          $method_seqtypes = get_the_terms(null, 'sequencing_type');
+          if ($method_seqtypes && !is_wp_error($method_seqtypes)){
+            foreach($method_seqtypes as $kw){
+              echo '<a href="'.get_term_link($kw->slug, 'sequencing_type').'" rel="tag" class="badge badge-info method-keyword '.$kw->slug.'">'.$kw->name.'</a> ';
+            }
+          }
+          ?>
+
         </div>
         <div class="card-footer">
           <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-sm">Read more</a>
