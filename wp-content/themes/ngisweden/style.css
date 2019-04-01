@@ -152,6 +152,9 @@ code {
 .ngisweden-header-breadcrumbs {
     background-color: #e9ecef;
 }
+.ngisweden-header-breadcrumbs .breadcrumb {
+    margin-bottom: 0;
+}
 
 
 
