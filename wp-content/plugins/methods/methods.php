@@ -133,3 +133,6 @@ require_once('methods_applications.php');
 require_once('methods_seqtype.php');
 require_once('methods_status.php');
 require_once('methods_keywords.php');
+
+// Link methods and bioinformatics
+require_once('methods_bioinfo_linking.php');

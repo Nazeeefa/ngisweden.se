@@ -118,6 +118,14 @@ function my_admin_bar_render() {
     global $wp_admin_bar;
     $wp_admin_bar->remove_menu('wp-logo');
     $wp_admin_bar->remove_menu('comments');
+    $wp_admin_bar->remove_node('new-media');
+    $wp_admin_bar->remove_node('new-cptbc');
+    $wp_admin_bar->remove_node('new-user');
+    // Rename posts to news
+    $new_post_node = $wp_admin_bar->get_node('new-post');
+    $new_post_node->title = 'News';
+    $wp_admin_bar->remove_node('new-post'); # Remove first so that it's at the bottom
+    $wp_admin_bar->add_node($new_post_node);
 }
 add_action( 'wp_before_admin_bar_render', 'my_admin_bar_render' );
 

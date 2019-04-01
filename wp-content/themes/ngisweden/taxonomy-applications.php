@@ -56,6 +56,7 @@
   }
 
   // Loop through the methods in this application and show snippets
+  $bioinformatics_methods = array();
   if (have_posts()) {
     while (have_posts()) {
       the_post();
@@ -69,7 +70,14 @@
           break;
         }
       }
-      if(!$this_application){
+      // Collect the bioinformatics posts for later
+      if(!$this_application || get_post_type() == 'bioinformatics'){
+        $bioinformatics_methods[] = array(
+          'title' => get_the_title(),
+          'link' => get_the_permalink()
+        );
+      }
+      if(!$this_application || get_post_type() !== 'methods'){
         continue;
       }
 
@@ -134,6 +142,16 @@
   }
   if($postcounter % 3 != 2){
     echo '</div>';
+  }
+
+  // Show the bioinformatics methods if we have any
+  if(count($bioinformatics_methods) > 0){
+    echo '<h3>Bioinformatics Methods</h2>';
+    echo '<ul>';
+    foreach($bioinformatics_methods as $method){
+      echo '<li><a href="'.$method['link'].'">'.$method['title'].'</a></li>';
+    }
+    echo '</ul>';
   }
 
   // Echo the rest of the page contents from the linked page
