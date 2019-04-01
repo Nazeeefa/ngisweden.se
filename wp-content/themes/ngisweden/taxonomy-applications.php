@@ -23,8 +23,10 @@
   echo $page_intro;
   // Loop through the methods in this application and show snippets
   if (have_posts()) {
+    $postcounter = null;
     while (have_posts()) {
       the_post();
+      $postcounter = $wp_query->current_post;
       if($wp_query->current_post % 3 == 0){
         echo '<div class="ngisweden-application-methods card-deck">';
       }
@@ -64,6 +66,9 @@
       if($wp_query->current_post % 3 == 2){
         echo '</div>';
       }
+    }
+    if($postcounter % 3 != 2){
+      echo '</div>';
     }
   }
   echo $page_contents;
