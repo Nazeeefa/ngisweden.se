@@ -330,3 +330,11 @@ footer {
 .method-keyword {
     font-size: 11px;
 }
+.method-status-icon {
+    width: 24px;
+    float: right;
+}
+.method-status-icon svg {
+    fill: #ffffff;
+    width: 12px;
+}

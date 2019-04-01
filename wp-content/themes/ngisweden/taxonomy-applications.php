@@ -73,6 +73,24 @@
         continue;
       }
 
+      // Get the status icon
+      $status_icon = '';
+      $method_statuses = get_the_terms(null, 'method_status');
+      if ($method_statuses && !is_wp_error($method_statuses)){
+        foreach($method_statuses as $status){
+          $status_meta = get_option( "method_status_icon_".$status->term_id );
+          if($status_meta && isset($status_meta['method_status_icon'])){
+            $icon_colour = $status_meta['method_status_colour'];
+            $icon_url = get_stylesheet_directory().'/'.$status_meta['method_status_icon'];
+            if(file_exists($icon_url) && is_file($icon_url)){
+              $status_icon = '<a href="'.get_term_link($status->slug, 'method_status').'" data-toggle="tooltip" title="Status: '.$status->name.'" class="method-status-icon badge badge-'.$icon_colour.'">';
+              $status_icon .= file_get_contents($icon_url);
+              $status_icon .= '</a>';
+            }
+          }
+        }
+      }
+
       // Show the method card
       $postcounter++;
       if($postcounter % 3 == 0){
@@ -82,6 +100,7 @@
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">
+            <?php echo $status_icon; ?>
             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
           </h5>
           <?php
