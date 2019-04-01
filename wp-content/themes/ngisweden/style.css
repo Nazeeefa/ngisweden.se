@@ -149,6 +149,9 @@ code {
         width: 350px;
     }
 }
+.ngisweden-header-breadcrumbs {
+    background-color: #e9ecef;
+}
 
 
 
@@ -330,11 +333,14 @@ footer {
 .method-keyword {
     font-size: 11px;
 }
-.method-status-icon {
+.ngisweden-application-methods.card-deck .method-status-icon {
     width: 24px;
     float: right;
 }
 .method-status-icon svg {
-    fill: #ffffff;
+    fill: currentColor;
     width: 12px;
+}
+.single-methods .method-status-icon svg {
+    margin-top: -2px;
 }

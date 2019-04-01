@@ -40,3 +40,4 @@
         </div>
       </div>
     </nav>
+    <?php if(!is_front_page()){ bootstrap_breadcrumb(); } ?>

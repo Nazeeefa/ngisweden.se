@@ -16,7 +16,7 @@
   $page_contents = '';
 
   // Get title and contents from the linked WP Page, if we have one
-  if($term_meta && isset($term_meta['application_page'])){
+  if(isset($term_meta['application_page']) && $term_meta['application_page']){
     $app_page = get_post($term_meta['application_page']);
     $page_title = $app_page->post_title;
     $page_contents = $app_page->post_content;
@@ -85,7 +85,7 @@
             if(file_exists($icon_url) && is_file($icon_url)){
               $status_icon = '<a href="'.get_term_link($status->slug, 'method_status').'" data-toggle="tooltip" title="Status: '.$status->name.'" class="method-status-icon badge badge-'.$icon_colour.'">';
               $status_icon .= file_get_contents($icon_url);
-              $status_icon .= '</a>';
+              $status_icon .= '</a> ';
             }
           }
         }

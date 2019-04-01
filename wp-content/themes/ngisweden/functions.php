@@ -3,6 +3,8 @@
 
 $ngisweden_theme_version = 0.1;
 
+require_once(get_stylesheet_directory().'/includes/bootstrap-breadcrumb.php');
+
 // Enqueue Bootstrap JS and CSS files
 function ngis_wp_bootstrap_scripts_styles() {
     wp_enqueue_script('popperjs', get_stylesheet_directory_uri().'/includes/js/popper.min.js', array(), '1.14.7', true );
