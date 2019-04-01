@@ -47,9 +47,6 @@
           </h5>
           <?php echo $subterm_app_description; ?>
         </div>
-        <div class="card-footer">
-          <a href="<?php echo get_term_link($child, 'applications'); ?>" class="btn btn-primary btn-sm">Read more</a>
-        </div>
       </div>
       <?php
       if($postcounter % 3 == 2){
@@ -108,9 +105,6 @@
           }
           ?>
 
-        </div>
-        <div class="card-footer">
-          <a href="<?php the_permalink(); ?>" class="btn btn-primary btn-sm">View method</a>
         </div>
       </div>
       <?php

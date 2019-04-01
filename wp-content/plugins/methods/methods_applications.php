@@ -45,7 +45,12 @@ add_action( 'init', 'create_method_tax_applications', 0 );
 
 // Add custom fields to the Applications taxonomy
 function applications_taxonomy_custom_fields($tag) {
-    $term_meta = get_option( "application_page_".$tag->term_id ); ?>
+    $term_meta = get_option( "application_page_".$tag->term_id );
+    $page_link = '<a class="button button-primary" disabled>Edit Page</a>';
+    if(isset($term_meta['application_page']) && $term_meta['application_page']){
+        $page_link = '<a href="'.get_edit_post_link($term_meta['application_page']).'" class="button button-primary">Edit Page</a>';
+    }
+    ?>
     <tr class="form-field">
         <th scope="row" valign="top">
             <label for="application_page"><?php _e('Application page'); ?></label>
@@ -57,7 +62,9 @@ function applications_taxonomy_custom_fields($tag) {
                 'name' => 'application_page',
                 'show_option_none'  => '[ choose a page ]',
                 'option_none_value' => 0,
-            )); ?>
+            ));
+            echo $page_link;
+            ?>
             <p><?php _e('Used so that we can write more than just a short description box.'); ?></p>
         </td>
     </tr>
