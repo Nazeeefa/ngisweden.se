@@ -219,6 +219,9 @@ footer {
 #front-page-container .homepage-applications .wpdreams_asl_container .probox .proinput input {
     height: 48px;
 }
+#front-page-container .homepage-applications .wpdreams_asl_container .probox .proinput input.autocomplete {
+    margin-top: -48px !important;
+}
 #front-page-container .homepage-applications .wpdreams_asl_container .probox:focus-within,
 #front-page-container .homepage-applications .wpdreams_asl_container .probox:hover,
 .homepage-applications .homepage-application a:hover,

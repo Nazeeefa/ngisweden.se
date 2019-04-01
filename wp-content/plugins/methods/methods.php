@@ -45,7 +45,6 @@ function method_post_type() {
         # Gutenberg editor config stuff from here on
         'show_in_rest' => true,
         'template' => array(
-            array('core/paragraph', array('placeholder' => 'Short one-sentence introduction')),
             array('core/heading', array('content' => 'Sample Requirements')),
             array('core/list'),
             array('core/heading', array('content' => 'How to evaluate the sample quality')),
