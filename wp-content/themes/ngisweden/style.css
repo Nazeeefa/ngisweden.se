@@ -8,6 +8,11 @@ body {
 body.admin-bar {
     padding-top: 46px;
 }
+@media all and (max-width: 992px) {
+    body, body.admin-bar {
+        padding-top: 74px;
+    }
+}
 code {
     color: #5679ac;
     background-color: #f2f4f7;
@@ -162,6 +167,7 @@ footer {
     background-color: #f8f9fa;
     padding: 4rem 0 3rem;
     margin-top: 8rem;
+    border-top: 1px solid #ededed;
 }
 .ngisweden-footer-logos {
     text-align: right;
@@ -190,7 +196,7 @@ footer {
 }
 
 .main-page {
-    margin-top: 10px;
+    margin-top: 30px;
 }
 .main-page > .h1,
 .main-page > .h2,
@@ -207,6 +213,25 @@ footer {
     margin-top: 2rem;
 }
 
+
+.ngisweden-sidebar-page-sidebar {
+    background-color: #f8f9fa;
+}
+.ngisweden-sidebar-page-sidebar::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #f8f9fa;
+    z-index: -1;
+    margin-left: -15px;
+}
+@media screen and (max-width: 991px) {
+    .ngisweden-sidebar-page-sidebar::before {
+        display: none;
+    }
+}
 
 
 .homepage-applications {
