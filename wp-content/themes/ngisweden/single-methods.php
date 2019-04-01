@@ -94,16 +94,19 @@
 
           // Show associated bioinformatics pipelines
           if(get_post_type() == 'methods'){
-            $series = new WP_Query( array(
-              'post_type' => 'bioinformatics',
-              'post__in' => get_post_meta( get_the_ID(), '_bioinformatics', true ),
-              'nopaging' => true
-            ) );
-            if ( $series-> have_posts() ) {
-              echo '<h5 class="mt-3">Bioinformatics Pipelines</h5>';
-              while ( $series->have_posts() ) {
-                $series->the_post();
-                echo '<li><a href="'.get_the_permalink().'">'.get_the_title().'</a></li>';
+            $linked_bioinfo_posts = get_post_meta( get_the_ID(), '_bioinformatics', true );
+            if($linked_bioinfo_posts && count($linked_bioinfo_posts) > 0){
+              $series = new WP_Query( array(
+                'post_type' => 'bioinformatics',
+                'post__in' => $linked_bioinfo_posts,
+                'nopaging' => true
+              ) );
+              if ( $series-> have_posts() ) {
+                echo '<h5 class="mt-3">Bioinformatics Pipelines</h5>';
+                while ( $series->have_posts() ) {
+                  $series->the_post();
+                  echo '<li><a href="'.get_the_permalink().'">'.get_the_title().'</a></li>';
+                }
               }
             }
           }
