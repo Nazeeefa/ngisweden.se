@@ -138,6 +138,25 @@ footer {
     padding: 4rem 0 3rem;
     margin-top: 8rem;
 }
+.footer-scilifelab-logo {
+    max-width: 200px;
+    margin-bottom: 15px;
+}
+.footer-uni-logo {
+    height: 60px;
+    padding: 5px;
+    margin-bottom: 5px;
+    -webkit-filter: grayscale(100%) opacity(70%);
+    filter: grayscale(100%) opacity(70%);
+    -webkit-transition: filter 0.1s ease-in-out;
+    transition: filter 0.1s ease-in-out;
+}
+.footer-uni-logo:hover,
+.footer-uni-logo:focus,
+.footer-uni-logo:active{
+    -webkit-filter: grayscale(0%)  opacity(100%);
+    filter: grayscale(0%)  opacity(100%);
+}
 
 .main-page {
     margin-top: 40px;
