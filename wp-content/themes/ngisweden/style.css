@@ -19,17 +19,20 @@ code {
     margin-right: 1.5em;
     display: inline;
     float: left;
+    text-align: left;
 }
 .alignright, img.alignright {
     margin-left: 1.5em;
     display: inline;
     float: right;
+    text-align: right;
 }
 .aligncenter, img.aligncenter {
     margin-right: auto;
     margin-left: auto;
     display: block;
     clear: both;
+    text-align: center;
 }
 
 #wpadminbar {
