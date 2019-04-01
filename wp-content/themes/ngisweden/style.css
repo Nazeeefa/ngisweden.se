@@ -8,6 +8,13 @@ body {
 body.admin-bar {
     padding-top: 46px;
 }
+code {
+    color: #5679ac;
+    background-color: #f2f4f7;
+    padding: 3px 5px;
+    margin: 0px 5px;
+    border-radius: 3px;
+}
 
 #wpadminbar {
     position: fixed;
