@@ -38,7 +38,8 @@
     </style>
 </head>
 <body>
-
+<h1>Search</h1>
+<input type="text" placeholder="Search term" id="icon_search" disabled>
 <?php
 $dirs = ['fontawesome-svgs/solid', 'fontawesome-svgs/regular', 'fontawesome-svgs/brands'];
 foreach($dirs as $dir){
@@ -55,5 +56,21 @@ foreach($dirs as $dir){
     }
 }
 ?>
+<script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+$(function(){
+    $('#icon_search').attr('disabled', false);
+    $('#icon_search').on('change keyup', function(e){
+        var search_term = this.value;
+        $('div').each(function(){
+            if($(this).find('span').text().includes(search_term)){
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
+    });
+});
+</script>
 </body>
 </html>
