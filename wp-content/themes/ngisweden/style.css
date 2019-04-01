@@ -179,6 +179,9 @@ footer {
     -webkit-filter: grayscale(0%)  opacity(100%);
     filter: grayscale(0%)  opacity(100%);
 }
+.ngisweden-footer-social a img {
+    max-width: 30px;
+}
 
 .main-page {
     margin-top: 40px;
