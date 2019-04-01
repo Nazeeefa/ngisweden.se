@@ -29,10 +29,9 @@
   // Get term children, if there are any
   $term_children = get_term_children($taxonomy->term_id, 'applications');
   if(count($term_children) > 0){
-    $postcounter++;
     // Show child terms, not methods
-    echo '<div class="ngisweden-application-methods card-deck">';
     foreach ($term_children as $child) {
+      $postcounter++;
       // Get the sub-term details
       $subterm = get_term_by('id', $child, 'applications' );
       $subterm_app_description = trim(strip_tags(term_description($child, 'applications')));
