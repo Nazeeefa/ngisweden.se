@@ -160,3 +160,26 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
 
 // Don't let people have any choice! muwahahahaha
 remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+
+
+// Add theme widgets for footer
+class FooterLogos extends WP_Widget {
+    public function __construct() {
+        $widget_opts = array(
+            'classname' => 'ngisweden-footer-logos',
+            'description' => 'SciLifeLab / university logos for the footer',
+        );
+        parent::__construct( 'ngisweden_footer_logos', 'NGI Footer Logos', $widget_opts);
+    }
+    public function widget( $args, $instance ) {
+        echo '<div class="ngisweden-footer-logos">
+            <a href="https://www.scilifelab.se" target="_blank"><img src="'.get_stylesheet_directory_uri().'/img/SciLifeLab-logo.svg" class="footer-scilifelab-logo" alt="SciLifeLab logo"></a>
+            <br>
+            <a href="https://www.ki.se" target="_blank"><img src="'.get_stylesheet_directory_uri().'/img/KI-logo.svg" class="footer-uni-logo" alt="KI logo"></a>
+            <a href="https://www.kth.se" target="_blank"><img src="'.get_stylesheet_directory_uri().'/img/KTH-logo.svg" class="footer-uni-logo" alt="KTH logo"></a>
+            <a href="https://www.su.se" target="_blank"><img src="'.get_stylesheet_directory_uri().'/img/SU-logo.svg" class="footer-uni-logo" alt="SU logo"></a>
+            <a href="https://www.uu.se" target="_blank"><img src="'.get_stylesheet_directory_uri().'/img/UU-logo.svg" class="footer-uni-logo" alt="UU logo"></a>
+        </div>';
+    }
+}
+add_action( 'widgets_init', function(){ register_widget( 'FooterLogos' ); });
