@@ -6,9 +6,11 @@
   <div class="homepage-applications">
     <?php echo do_shortcode('[wpdreams_ajaxsearchlite]'); ?>
     <?php
+    // Get only top-level application terms
     $applications = get_terms( array(
       'taxonomy' => 'applications',
       'hide_empty' => false,
+      'parent' => 0
     ) );
 
     foreach($applications as $application){
