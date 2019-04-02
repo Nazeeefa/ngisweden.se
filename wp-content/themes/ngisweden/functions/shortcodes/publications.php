@@ -1,5 +1,7 @@
 <?php
+
 // NGI Publications Shortcode
+// Fetches publications from publications.scilifelab.se and displays nicely
 function ngisweden_pubs_shortcode($atts_raw){
 
     // Facility labels

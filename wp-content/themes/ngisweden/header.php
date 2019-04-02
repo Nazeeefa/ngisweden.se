@@ -40,4 +40,16 @@
         </div>
       </div>
     </nav>
-    <?php if(!is_front_page()){ bootstrap_breadcrumb(); } ?>
+    <?php
+    // Navigation breadcrumbs
+    if(!is_front_page()){
+        bootstrap_breadcrumb();
+    }
+
+    // Customise > Alert box
+    if(get_theme_mod( 'ngisweden_homepage_alert_text' ) && strlen(trim(get_theme_mod( 'ngisweden_homepage_alert_text' ))) > 0) {
+      echo '<div class="container mt-3"><div data-alert class="alert '.get_theme_mod( 'ngisweden_homepage_alert_colour' ).'">';
+      echo get_theme_mod( 'ngisweden_homepage_alert_text' );
+      echo '</div></div>';
+    }
+    ?>
