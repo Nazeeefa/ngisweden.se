@@ -365,7 +365,7 @@ function ngisweden_pubs_shortcode($atts_raw){
                 $author['given'] = ucwords(strtolower($author['given']));
             }
             if(strtoupper($author['family']) == $author['family']){
-                $author['family'] = ucwords(strtolower(($author['family']));
+                $author['family'] = ucwords(strtolower($author['family']));
             }
             $authors[] = '<span class="pub-author" data-toggle="tooltip" title="'.$author['given'].' '.$author['family'].'">'.$author['initials'].' '.$author['family'].'</span>';
         }
