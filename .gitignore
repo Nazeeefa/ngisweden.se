@@ -5,6 +5,7 @@ wp-content/plugins/*
 # Ignore all thems except the one we wrote
 wp-content/themes/*
 !wp-content/themes/ngisweden/
+wp-content/themes/ngisweden/publications_cache.json
 
 *.log
 .DS_Store

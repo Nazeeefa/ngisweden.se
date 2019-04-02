@@ -258,3 +258,95 @@ class FooterSocialButtons extends WP_Widget {
     }
 }
 add_action( 'widgets_init', function(){ register_widget('FooterSocialButtons'); });
+
+
+
+// NGI Publications Shortcode
+function ngisweden_pubs_shortcode($atts){
+    // Fetch the cached publications data
+    $pubs_json = file_get_contents(get_template_directory().'/publications_cache.json');
+    $pubs_data = json_decode($pubs_json, true);
+    // Refresh cache if it doesn't exist or is more than a week old
+    if(!$pubs_data or $pubs_data['downloaded'] < (time()-(60*60*24*7))){
+        $pubs_json = file_get_contents('https://publications.scilifelab.se/label/NGI%20Stockholm%20%28Genomics%20Applications%29.json?limit=20');
+        $pubs_data = json_decode($pubs_json, true);
+        $pubs_data['downloaded'] = time();
+        file_put_contents(get_template_directory().'/publications_cache.json', json_encode($pubs_data));
+    }
+    // Build output
+    $modals = '';
+    $pc = '<div class="ngisweden-publications mb-5">';
+    $pc .= '<h5>User Publications</h5>';
+    $pc .= '<div class="list-group">';
+    $i = 0;
+    // Randomise the order
+    shuffle($pubs_data['publications']);
+    foreach($pubs_data['publications'] as $pub){
+        $i++;
+
+        // Add to the visible list
+        $pc .= '
+        <a data-toggle="modal" data-target="#pub_'.$pub['iuid'].'" href="'.$pub['links']['display']['href'].'" target="_blank" class="list-group-item list-group-item-action">
+            '.$pub['title'].'<br>
+            <small class="text-muted"><em>'.$pub['journal']['title'].'</em> ('.explode('-', $pub['published'])[0].')</small>
+        </a>';
+
+        // Make a modal
+        $pub_ref = '';
+        if($pub['journal']['title']){
+            $pub_ref .= '<em>'.$pub['journal']['title'].'</em>, ';
+        }
+        $pub_ref .= '<small>';
+        if($pub['journal']['volume']){
+            $pub_ref .= '<strong>'.$pub['journal']['volume'].'</strong> ';
+        }
+        if($pub['journal']['issue']){
+            $pub_ref .= '('.$pub['journal']['issue'].') ';
+        }
+        if($pub['journal']['issn']){
+            $pub_ref .= $pub['journal']['issn'].' ';
+        }
+        if($pub['published']){
+            $pub_ref .= '('.explode('-', $pub['published'])[0].')';
+        }
+        $pub_ref .= '</small>';
+
+        $authors = array();
+        foreach($pub['authors'] as $author){
+            $authors[] = '<span style="cursor: default;" class="pub-author" data-toggle="tooltip" title="'.$author['given'].' '.$author['family'].'">'.$author['initials'].' '.$author['family'].'</span>';
+        }
+
+        $abstract = '';
+        if($pub['abstract']){
+            $abstract = '<div class="modal-body small">'.$pub['abstract'].'</div>';
+        }
+        $modals .= '
+        <div class="modal fade" id="pub_'.$pub['iuid'].'" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <div class="modal-title">
+                    <h5>'.$pub['title'].'</h5>
+                    <p class="font-weight-light">'.implode(', ', $authors).'</p>
+                    <p class="mb-0">'.$pub_ref.'</p>
+                </div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              </div>
+              '.$abstract.'
+              <div class="modal-footer">
+                <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
+                <a href="https://www.ncbi.nlm.nih.gov/pubmed/'.$pub['pmid'].'" target="_blank" class="btn btn-sm btn-info">Pubmed <i class="fas fa-external-link-alt fa-sm ml-2"></i></a>
+                <a href="https://dx.doi.org/'.$pub['doi'].'" target="_blank" class="btn btn-sm btn-primary">DOI <i class="fas fa-external-link-alt fa-sm ml-2"></i></a>
+                <a href="'.$pub['links']['display']['href'].'" target="_blank" class="btn btn-sm btn-success">SciLifeLab Pubs <i class="fas fa-external-link-alt fa-sm ml-2"></i></a>
+              </div>
+            </div>
+          </div>
+        </div>';
+        if($i >= 5){
+            break;
+        }
+    }
+    $pc .= '</div></div>';
+	return $pc.$modals;
+}
+add_shortcode('ngisweden_publications', 'ngisweden_pubs_shortcode');

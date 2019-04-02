@@ -346,6 +346,10 @@ footer {
     }
 }
 
+.ngisweden-publications .list-group-item {
+    font-size: 14px;
+}
+
 .ngisweden-application-methods {
     margin-bottom: 1.5rem;
     font-size: 80%;
