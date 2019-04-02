@@ -348,6 +348,14 @@ footer {
 
 .ngisweden-publications .list-group-item {
     font-size: 14px;
+    border-left: 2px solid #dedede;
+}
+.ngisweden-publications .list-pub-collab {
+    border-left: 2px solid #4986e7 !important;
+}
+.pub-author {
+    cursor: default;
+    white-space: nowrap;
 }
 
 .ngisweden-application-methods {
