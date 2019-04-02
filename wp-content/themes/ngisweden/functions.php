@@ -282,8 +282,8 @@ function ngisweden_pubs_shortcode($atts_raw){
     ), $atts_raw);
 
     // Fetch the cached publications data
-    $pubs_json = file_get_contents(get_template_directory().'/publications_cache.json');
-    $pubs_data = json_decode($pubs_json, true);
+    $pubs_json = @file_get_contents(get_template_directory().'/publications_cache.json');
+    $pubs_data = @json_decode($pubs_json, true);
 
     // Refresh cache if it doesn't exist or is more than a week old
     if(!$pubs_data or $pubs_data['downloaded'] < (time()-(60*60*24*7))){
@@ -316,7 +316,7 @@ function ngisweden_pubs_shortcode($atts_raw){
                 }
             }
         }
-        file_put_contents(get_template_directory().'/publications_cache.json', json_encode($pubs_data));
+        @file_put_contents(get_template_directory().'/publications_cache.json', json_encode($pubs_data));
     }
 
     // Randomise the order
