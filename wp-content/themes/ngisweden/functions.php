@@ -361,11 +361,11 @@ function ngisweden_pubs_shortcode($atts_raw){
         $authors = array();
         foreach($pub['authors'] as $author){
             // If ALL CAPS then capitilise nicely
-            if(mb_strtoupper($author['given'], 'utf-8') == $author['given']){
-                $author['given'] = mb_convert_case($author['given'], MB_CASE_TITLE, "UTF-8");
+            if(strtoupper($author['given']) == $author['given']){
+                $author['given'] = ucwords(strtolower($author['given']));
             }
-            if(mb_strtoupper($author['family'], 'utf-8') == $author['family']){
-                $author['family'] = mb_convert_case($author['family'], MB_CASE_TITLE, "UTF-8");
+            if(strtoupper($author['family']) == $author['family']){
+                $author['family'] = ucwords(strtolower(($author['family']));
             }
             $authors[] = '<span class="pub-author" data-toggle="tooltip" title="'.$author['given'].' '.$author['family'].'">'.$author['initials'].' '.$author['family'].'</span>';
         }
