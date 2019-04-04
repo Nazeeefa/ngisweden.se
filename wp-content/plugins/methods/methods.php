@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: NGI Methods
+Plugin Name: NGI Custom Content
 Plugin URI: https://github.com/NationalGenomicsInfrastructure/ngisweden.se
 Description: Plugin to handle administration, submission and display of library prep methods on the NGI website.
 Version: 1.0

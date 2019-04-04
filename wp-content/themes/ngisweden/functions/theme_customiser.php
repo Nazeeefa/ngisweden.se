@@ -16,22 +16,22 @@ function ngisweden_theme_customizer( $wp_customize ) {
         }
     }
 
-    // Homepage Alert
-    $wp_customize->add_section( 'ngisweden_homepage_alert_section' , array(
-        'title'       => 'Homepage Alert',
+    // Banner Messages
+    $wp_customize->add_section( 'ngisweden_banner_message_section' , array(
+        'title'       => 'Banner Messages',
         'priority'    => 32,
-        'description' => 'Show an alert box at the top of the homepage',
+        'description' => 'Show an alert box at the top of every page.',
     ) );
-    $wp_customize->add_setting( 'ngisweden_homepage_alert_text' );
-    $wp_customize->add_control( new NGISweden_Customize_Textarea_Control( $wp_customize, 'ngisweden_homepage_alert_text', array(
-        'label'   => 'Alert Text',
-        'section' => 'ngisweden_homepage_alert_section',
-        'settings'   => 'ngisweden_homepage_alert_text',
+    $wp_customize->add_setting( 'ngisweden_banner_message_text' );
+    $wp_customize->add_control( new NGISweden_Customize_Textarea_Control( $wp_customize, 'ngisweden_banner_message_text', array(
+        'label'   => 'Banner Text',
+        'section' => 'ngisweden_banner_message_section',
+        'settings'   => 'ngisweden_banner_message_text',
     ) ) );
-    $wp_customize->add_setting( 'ngisweden_homepage_alert_colour' );
-    $wp_customize->add_control( 'ngisweden_homepage_alert_colour', array(
-        'label'   => 'Alert Colour:',
-        'section' => 'ngisweden_homepage_alert_section',
+    $wp_customize->add_setting( 'ngisweden_banner_message_colour' );
+    $wp_customize->add_control( 'ngisweden_banner_message_colour', array(
+        'label'   => 'Banner Colour:',
+        'section' => 'ngisweden_banner_message_section',
         'type'    => 'select',
         'choices'    => array(
             'alert-info' => 'Blue',
