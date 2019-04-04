@@ -10,10 +10,22 @@
 ## Table of Contents
 
 * [Quick Reference](#quick-reference)
-* [Introduction](#introduction)
-* [NGI Sweden theme](#ngi-sweden-theme)
-* [NGI Custom Content plugin](#ngi-custom-content-plugin)
-
+    * [Banner Messages](#banner-messages)
+    * [Publication list](#publication-list)
+    * [Homepage application launcher](#homepage-application-launcher)
+    * [Page footer widgets](#page-footer-widgets)
+    * [Applications pages](#applications-pages)
+    * [Minor things](#minor-things)
+* [Content style guide](#content-style-guide)
+* [How the website works](#how-the-website-works)
+    * [Introduction](#introduction)
+    * [_NGI Sweden_ theme](#ngi-sweden-theme)
+    * [_NGI Custom Content_ plugin](#ngi-custom-content-plugin)
+* [Developing the website code](#developing-the-website-code)
+    * [Testing locally](#testing-locally)
+    * [Installing the website](#installing-the-website)
+    * [Required plugins](#required-plugins)
+* [Credits](#credits)
 
 # Quick Reference
 
@@ -326,6 +338,6 @@ The website should still work basically fine without them, but they're good to h
 | Post Types Order          | v1.9.3.9        | https://wordpress.org/plugins/post-types-order/ | Adds an admin interface for each post type that allows drag-and-drop reordering of posts. |
 
 
-## Credits
+# Credits
 
 This website code was written by Phil Ewels ([@ewels](http://github.com/ewels/)) in a frenzied rush before going on paternity leave in March / April 2019.
