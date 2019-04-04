@@ -72,5 +72,23 @@ function remove_dashboard_widgets() {
 }
 add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
 
-// Don't let people have any choice! muwahahahaha
+// Don't let people have any choice over the admin theme colour! muwahahahaha
 remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
+
+//
+// Add widget box to help people with documentation
+//
+function ngisweden_dashboard_help_widget_function() {
+    // TODO: Could probably add more useful stuff here...
+    echo '<p>Welcome to the NGI website administration area!</p>';
+    echo '<p>Not sure where to start? <a href="https://github.com/NationalGenomicsInfrastructure/ngisweden.se/blob/master/README.md">Read the documentation on GitHub</a>.</p>';
+}
+function ngisweden_add_dashboard_widgets() {
+    add_meta_box(
+        'ngisweden_dashboard_help_widget',
+        'NGI Sweden - Admin Documentation',
+        'ngisweden_dashboard_help_widget_function',
+        'dashboard', 'side', 'high'
+    );
+}
+add_action( 'wp_dashboard_setup', 'ngisweden_add_dashboard_widgets' );
