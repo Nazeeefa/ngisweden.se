@@ -81,7 +81,7 @@ remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 function ngisweden_dashboard_help_widget_function() {
     // TODO: Could probably add more useful stuff here...
     echo '<p>Welcome to the NGI website administration area!</p>';
-    echo '<p>Not sure where to start? <a href="https://github.com/NationalGenomicsInfrastructure/ngisweden.se/blob/master/README.md">Read the documentation on GitHub</a>.</p>';
+    echo '<p>Not sure where to start? <a href="https://github.com/NationalGenomicsInfrastructure/ngisweden.se/blob/master/README.md" target="_blank">Read the documentation on GitHub</a>.</p>';
 }
 function ngisweden_add_dashboard_widgets() {
     add_meta_box(
