@@ -11,21 +11,29 @@
 
 * [Quick Reference](#quick-reference)
     * [Banner Messages](#banner-messages)
-    * [Publication list](#publication-list)
-    * [Homepage application launcher](#homepage-application-launcher)
-    * [Page footer widgets](#page-footer-widgets)
     * [Applications pages](#applications-pages)
     * [Minor things](#minor-things)
 * [Content style guide](#content-style-guide)
 * [How the website works](#how-the-website-works)
     * [Introduction](#introduction)
     * [_NGI Sweden_ theme](#ngi-sweden-theme)
+        * [Template files](#template-files)
+        * [CSS Styles](#css-styles)
+        * [Bonus functionality](#bonus-functionality)
+        * [WordPress Admin interface](#wordpress-admin-interface)
     * [_NGI Custom Content_ plugin](#ngi-custom-content-plugin)
+        * [Post types](#post-types)
+        * [Taxonomies](#taxonomies)
+        * [Applications](#applications)
+        * [Statuses](#statuses)
+        * [Publication list](#publication-list)
+        * [Homepage application launcher](#homepage-application-launcher)
 * [Developing the website code](#developing-the-website-code)
     * [Testing locally](#testing-locally)
     * [Installing the website](#installing-the-website)
     * [Required plugins](#required-plugins)
 * [Credits](#credits)
+
 
 # Quick Reference
 
@@ -45,55 +53,12 @@ Warning - sample delivery closed for vacations!
 
 Banner messages are shown on every page and are kind of annoying, so use sparingly.
 
-### Publication list
-Use the following shortcode:
-```
-[ngisweden_publications]
-```
-
-Arguments:
-* `title` - Show or hide the title above the list
-    * `0` to disable, `1` to enable. Default: `1`
-* `randomise` - Randomise the list, or show the most recent
-    * `0` to leave sorted, `1` to randomise. Default: `1`
-* `num` - Number of publications to show in the list
-    * Any number. Default `5`
-* `collabs` - _Minimum_ number of publications that should be collaborations
-    * Any number. Default `0`
-    * If >= `num`, will show only collabs.
-    * If fewer collabs than `num` exist, list will be shorter than `num`
-
-For example, to show a sorted list with the 10 latest collaboration papers and no title:
-```
-[ngisweden_publications title=0 randomise=0 num=10 collabs=10]
-```
-
-### Homepage application launcher
-Shows the search bar and large blue buttons for the top-level method application categories.
-
-Use the following shortcode (there are currently no options):
-
-```
-[homepage_applications]
-```
-
-### Page footer widgets
-
-Two custom widgets called `NGI Footer Logos` and `NGI Footer Social Buttons`.
-
-Hopefully fairly self-explanitory. No options currently available.
-
-
 ### Applications pages
 
-> TL;DR; _Pages_ organised under _Applications_ will not show.
+_Pages_ organised under _Applications_ will not show.
 Make them show by linking them to a _Method > Application_ category.
 
-Any _Page_ added as a child of the one called _Applications_ will not be viewable on the website. This is because the _Method_ categories is called `applications`, so the URL clashes.
-
-This is fine though, in fact even intended. When you edit a _Method Application_,
-there's a special option to link to a _Page_. You can pick any, but logically, pick one that you've created under Applications. When viewing this _Method Application_, that _Page_ will display.
-Give the two the same name and it even sort of makes sense!
+See the [Applications section](##applications) below for more information.
 
 ### Minor things
 
@@ -237,13 +202,16 @@ The NGI Custom Content plugin adds two _Custom Post Types_ - `Methods` and `Bioi
 Both of these post types share several _Taxonomies_ to help to categorise them - `Applications`, `Sequencing Types`, `Statuses` and `Keywords`. The first three are _hierarchical_ - that is, they behave as categories that can be nested within one another. Keywords are not hierarchical, and behave more like flat labels or tags.
 
 Every method or bioinformatics page should be assigned to all of these taxonomies.
-**If a Method or Bioinformatics page is not assigned to an Application, it will not be visible on the website!**
+
+> **If a Method or Bioinformatics page is not assigned to an Application, it will not be visible on the website!**
 
 ### Applications
 
-Applications has additional special fields: _Application Page_ and _Application Icon_.
+Applications have additional special fields: _Application Page_ and _Application Icon_.
 
-It's difficult to have rich formatted content for a taxonomy, so to get around this we just write a short description and then link to a _Page_. This should be nested under the page called _Applications_. I realise that this is kind of confusing, see the [Non-obvious behaviour](#non-obvious-behaviour) section at the top for more.
+It's difficult to have rich formatted content for a taxonomy, so to get around this we just write a short description and then link to a _Page_. This should be nested under the page called _Applications_. I realise that this is kind of confusing, sorry.
+
+Note that any _Page_ added as a child of the one called _Applications_ will not be viewable on the website. This is because the _Method_ categories is called `applications`, so the URL clashes. This is kind of intended, as any pages there should be linked to from the relevant application taxonomy.
 
 The _Application Icon_ allows you to customise the icon used on the homepage for the given application. NB: This is only used for top-level applications. To use this, click the link _Click here to find icon URLs_ next to the field to open a new page. This has tonnes of nice icons, along with a search bar. Find one that you like and click it to reveal some text that shoud look something like this:
 
@@ -259,6 +227,38 @@ Statuses are used to show whether an application is high throughput and used in 
 
 These are used to customise the little badge that appears on methods of that status.
 
+
+### Publication list
+Use the following shortcode:
+```
+[ngisweden_publications]
+```
+
+Arguments:
+* `title` - Show or hide the title above the list
+    * `0` to disable, `1` to enable. Default: `1`
+* `randomise` - Randomise the list, or show the most recent
+    * `0` to leave sorted, `1` to randomise. Default: `1`
+* `num` - Number of publications to show in the list
+    * Any number. Default `5`
+* `collabs` - _Minimum_ number of publications that should be collaborations
+    * Any number. Default `0`
+    * If >= `num`, will show only collabs.
+    * If fewer collabs than `num` exist, list will be shorter than `num`
+
+For example, to show a sorted list with the 10 latest collaboration papers and no title:
+```
+[ngisweden_publications title=0 randomise=0 num=10 collabs=10]
+```
+
+### Homepage application launcher
+Shows the search bar and large blue buttons for the top-level method application categories.
+
+Use the following shortcode (there are currently no options):
+
+```
+[homepage_applications]
+```
 
 # Developing the website code
 
@@ -304,15 +304,6 @@ When setting up locally or deploying on a new server, you need to get copies of 
 > WordPress version >= 5.1 is required for the NGI Sweden website.
 
 Probably more plugins to come, but this is correct at the time of writing.
-
-### Hard requirements
-
-This plugins are directly used by the theme code, the site may break or do weird things without them.
-
-| Plugin Name               | Minimum Version | URL | Description |
-|---------------------------|-----------------|-----|-------------|
-| Ajax Search Lite          | v4.7.25         | https://wordpress.org/plugins/ajax-search-lite/ | Used for the search bar on the homepage and top navigation, shows dynamic results as you type. |
-| CPT Bootstrap Carousel    | v1.10           | https://wordpress.org/plugins/ajax-search-lite/ | Used for the image slider / carousel on the homepage. Also written by Phil, a long long time ago. |
 
 ### Hard requirements
 
