@@ -24,7 +24,7 @@
   if(isset($term_meta['application_page']) && $term_meta['application_page']){
     $app_page = get_post($term_meta['application_page']);
     $page_title = $app_page->post_title;
-    $page_contents = $app_page->post_content;
+    $page_contents = '<hr>'.$app_page->post_content;
   }
 
   // Start the structure to collect the cards
@@ -161,6 +161,7 @@
 
   // Print each set of card decks
   echo '<div class="col-10"><div class="tab-content">';
+  $cards_per_row = 2;
   $first = true;
   foreach($card_decks as $id => $deck){
     if(count($deck['cards']) > 0){
@@ -170,14 +171,14 @@
       foreach($deck['cards'] as $card){
         $postcounter++;
         // Start a row of cards
-        if($postcounter % 3 == 0) echo '<div class="ngisweden-application-methods card-deck">';
+        if($postcounter % $cards_per_row == 0) echo '<div class="ngisweden-application-methods card-deck">';
         // Print the card
         echo $card;
         // Finish a row of 3 cards
-        if($postcounter % 3 == 2) echo '</div>';
+        if($postcounter % $cards_per_row == $cards_per_row-1) echo '</div>';
       }
       // Loop did not finish a row of 3 cards
-      if($postcounter % 3 != 2) echo '</div>';
+      if($postcounter % $cards_per_row != $cards_per_row-1) echo '</div>';
       // End of tab content area
       echo '</div>';
       $first = false;
