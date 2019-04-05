@@ -362,6 +362,12 @@ footer {
     margin-bottom: 1.5rem;
     font-size: 80%;
 }
+@media (min-width: 576px){
+    .ngisweden-application-methods.card-deck .card {
+        max-width: calc(33% - 25px);
+    }
+}
+
 .methods-lead {
     font-size: 1.25rem;
     font-weight: 300;
