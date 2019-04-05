@@ -45,7 +45,7 @@ add_action( 'init', 'create_method_tax_status', 0 );
 
 // Add custom fields to the Status taxonomy
 function method_status_taxonomy_custom_fields($tag) {
-    $term_meta = get_option( "method_status_colour_".$tag->term_id );
+    $status_colour = get_option( "method_status_colour_".$tag->term_id );
     ?>
     <tr class="form-field">
         <th scope="row" valign="top">
@@ -53,11 +53,11 @@ function method_status_taxonomy_custom_fields($tag) {
         </th>
         <td>
             <select name="method_status_colour" id="method_status_colour">
-                <option value="red"<?php if($term_meta['method_status_colour'] == 'red'){ echo ' selected="selected"'; } ?>>Red</option>
-                <option value="green"<?php if($term_meta['method_status_colour'] == 'green'){ echo ' selected="selected"'; } ?>>Green</option>
-                <option value="blue"<?php if($term_meta['method_status_colour'] == 'blue'){ echo ' selected="selected"'; } ?>>Blue</option>
-                <option value="turquoise"<?php if($term_meta['method_status_colour'] == 'turquoise'){ echo ' selected="selected"'; } ?>>Turquoise</option>
-                <option value="orange"<?php if($term_meta['method_status_colour'] == 'orange'){ echo ' selected="selected"'; } ?>>Orange</option>
+                <option value="red"<?php if($status_colour == 'red'){ echo ' selected="selected"'; } ?>>Red</option>
+                <option value="green"<?php if($status_colour == 'green'){ echo ' selected="selected"'; } ?>>Green</option>
+                <option value="blue"<?php if($status_colour == 'blue'){ echo ' selected="selected"'; } ?>>Blue</option>
+                <option value="turquoise"<?php if($status_colour == 'turquoise'){ echo ' selected="selected"'; } ?>>Turquoise</option>
+                <option value="orange"<?php if($status_colour == 'orange'){ echo ' selected="selected"'; } ?>>Orange</option>
             </select>
             <p><?php _e('Set the colour of the corner ribbon'); ?></p>
         </td>
