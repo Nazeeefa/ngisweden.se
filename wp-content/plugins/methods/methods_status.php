@@ -45,7 +45,7 @@ add_action( 'init', 'create_method_tax_status', 0 );
 
 // Add custom fields to the Status taxonomy
 function method_status_taxonomy_custom_fields($tag) {
-    $term_meta = get_option( "method_status_icon_".$tag->term_id );
+    $term_meta = get_option( "method_status_colour_".$tag->term_id );
     ?>
     <tr class="form-field">
         <th scope="row" valign="top">
@@ -53,38 +53,23 @@ function method_status_taxonomy_custom_fields($tag) {
         </th>
         <td>
             <select name="method_status_colour" id="method_status_colour">
-                <option value="primary"<?php if($term_meta['method_status_colour'] == 'primary'){ echo ' selected="selected"'; } ?>>Blue</option>
-                <option value="info"<?php if($term_meta['method_status_colour'] == 'info'){ echo ' selected="selected"'; } ?>>Turquoise</option>
-                <option value="success"<?php if($term_meta['method_status_colour'] == 'success'){ echo ' selected="selected"'; } ?>>Green</option>
-                <option value="warning"<?php if($term_meta['method_status_colour'] == 'warning'){ echo ' selected="selected"'; } ?>>Orange</option>
-                <option value="danger"<?php if($term_meta['method_status_colour'] == 'danger'){ echo ' selected="selected"'; } ?>>Red</option>
-                <option value="secondary"<?php if($term_meta['method_status_colour'] == 'secondary'){ echo ' selected="selected"'; } ?>>Grey</option>
+                <option value="red"<?php if($term_meta['method_status_colour'] == 'red'){ echo ' selected="selected"'; } ?>>Red</option>
+                <option value="green"<?php if($term_meta['method_status_colour'] == 'green'){ echo ' selected="selected"'; } ?>>Green</option>
+                <option value="blue"<?php if($term_meta['method_status_colour'] == 'blue'){ echo ' selected="selected"'; } ?>>Blue</option>
+                <option value="turquoise"<?php if($term_meta['method_status_colour'] == 'turquoise'){ echo ' selected="selected"'; } ?>>Turquoise</option>
+                <option value="orange"<?php if($term_meta['method_status_colour'] == 'orange'){ echo ' selected="selected"'; } ?>>Orange</option>
             </select>
-            <p><?php _e('Set the colour of the icon'); ?></p>
-        </td>
-    </tr>
-    <tr class="form-field">
-        <th scope="row" valign="top">
-            <label for="method_status_icon"><?php _e('Status Icon'); ?></label>
-        </th>
-        <td>
-            <input type="text" name="method_status_icon" id="method_status_icon" size="25" style="width:60%;" value="<?php echo $term_meta['method_status_icon'] ? $term_meta['method_status_icon'] : ''; ?>"><br />
-            <p><?php _e('Find an icon and click + copy the text associated into the above box.'); ?>
-            <a href="<?php echo get_template_directory_uri() ?>/includes/icons/index.php" target="_blank"><?php _e('Click here to find icon URLs'); ?></a></p>
+            <p><?php _e('Set the colour of the corner ribbon'); ?></p>
         </td>
     </tr>
     <?php
 }
 // A callback function to save our extra taxonomy field(s)
 function save_method_status_tax_custom_fields( $term_id ) {
-    $term_meta = get_option( "method_status_icon_".$term_id );
+    $term_meta = get_option( "method_status_colour_".$term_id );
     if ( isset( $_POST['method_status_colour'] ) ) {
-        $term_meta['method_status_colour'] = $_POST['method_status_colour'];
+        update_option( "method_status_colour_".$term_id, $_POST['method_status_colour'] );
     }
-    if ( isset( $_POST['method_status_icon'] ) ) {
-        $term_meta['method_status_icon'] = $_POST['method_status_icon'];
-    }
-    update_option( "method_status_icon_".$term_id, $term_meta );
 }
 add_action( 'method_status_add_form_fields', 'method_status_taxonomy_custom_fields', 10, 2 );
 add_action( 'method_status_edit_form_fields', 'method_status_taxonomy_custom_fields', 10, 2 );

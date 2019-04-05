@@ -83,19 +83,17 @@
 
       // Get the status icon
       $status_icon = '';
+      $status_ribbon = '';
       $method_statuses = get_the_terms(null, 'method_status');
       if ($method_statuses && !is_wp_error($method_statuses)){
         foreach($method_statuses as $status){
-          $status_meta = get_option( "method_status_icon_".$status->term_id );
-          if($status_meta && isset($status_meta['method_status_icon'])){
-            $icon_colour = $status_meta['method_status_colour'];
-            $icon_url = get_stylesheet_directory().'/'.$status_meta['method_status_icon'];
-            if(file_exists($icon_url) && is_file($icon_url)){
-              $status_icon = '<a href="'.get_term_link($status->slug, 'method_status').'" data-toggle="tooltip" title="Status: '.$status->name.'" class="method-status-icon badge badge-'.$icon_colour.'">';
-              $status_icon .= file_get_contents($icon_url);
-              $status_icon .= '</a> ';
-            }
+          $colour = '';
+          $status_colour = get_option( "method_status_colour_".$status->term_id );
+          if($status_colour){
+            $colour = 'ribbon-'.$status_colour;
           }
+          // Overwrite, so if multiple we take the last one seen
+          $status_ribbon = '<div class="ribbon '.$colour.'"><span>'.$status->name.'</span></div>';
         }
       }
 
@@ -103,6 +101,7 @@
       $card_output = '
       <div class="card">
         <div class="card-body">
+          '.$status_ribbon.'
           <h5 class="card-title">
             '.$status_icon.'
             <a href="'.get_the_permalink().'">'.get_the_title().'</a>

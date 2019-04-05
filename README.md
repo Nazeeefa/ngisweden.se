@@ -226,9 +226,8 @@ Copy this text in to the _Application Icon_ field and save. It should now be use
 
 ### Statuses
 
-Statuses are used to show whether an application is high throughput and used in production or still in development. Again, there are two special fields: _Status Colour_ and _Status Icon_. The colour is pretty self-explanitory and the icon works exactly as above for the the _Application Icon_.
-
-These are used to customise the little badge that appears on methods of that status.
+Statuses are used to show whether an application is high throughput and used in production or still in development. Again, there is a special fields: _Status Colour_.
+Setting this decides on the colour of the little ribbon that goes over the corner of the cards on the application pages.
 
 
 ### Publication list
