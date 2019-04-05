@@ -315,7 +315,7 @@ This plugins are directly used by the theme code, the site may break or do weird
 | Plugin Name               | Minimum Version | URL | Description |
 |---------------------------|-----------------|-----|-------------|
 | Ajax Search Lite          | v4.7.25         | https://wordpress.org/plugins/ajax-search-lite/ | Used for the search bar on the homepage and top navigation, shows dynamic results as you type. |
-| CPT Bootstrap Carousel    | v1.10           | https://wordpress.org/plugins/ajax-search-lite/ | Used for the image slider / carousel on the homepage. Also written by Phil, a long long time ago. |
+| CPT Bootstrap Carousel    | v1.10           | https://wordpress.org/plugins/cpt-bootstrap-carousel/ | Used for the image slider / carousel on the homepage. Also written by Phil, a long long time ago. |
 | Events Manager            | v5.9.5          | https://wordpress.org/plugins/events-manager/ | Used to manage upcoming events on the website |
 
 ### Soft Requirements
