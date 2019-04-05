@@ -34,10 +34,12 @@ function ngisweden_theme_customizer( $wp_customize ) {
         'section' => 'ngisweden_banner_message_section',
         'type'    => 'select',
         'choices'    => array(
-            'alert-info' => 'Blue',
-            'alert-success' => 'Green',
-            'alert-warning' => 'Yellow',
             'alert-danger' => 'Red',
+            'alert-warning' => 'Yellow',
+            'alert-success' => 'Green',
+            'alert-primary' => 'Blue',
+            'alert-info' => 'Turquoise',
+            'alert-secondary' => 'Grey',
         ),
     ) );
 

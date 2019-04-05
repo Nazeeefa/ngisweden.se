@@ -47,9 +47,10 @@
     }
 
     // Customise > Alert box
-    if(get_theme_mod( 'ngisweden_homepage_alert_text' ) && strlen(trim(get_theme_mod( 'ngisweden_homepage_alert_text' ))) > 0) {
-      echo '<div class="container mt-3"><div data-alert class="alert '.get_theme_mod( 'ngisweden_homepage_alert_colour' ).'">';
-      echo get_theme_mod( 'ngisweden_homepage_alert_text' );
+    if(get_theme_mod( 'ngisweden_banner_message_text' ) && strlen(trim(get_theme_mod( 'ngisweden_banner_message_text' ))) > 0) {
+      $colour = get_theme_mod( 'ngisweden_banner_message_colour' );
+      echo '<div class="container mt-3"><div data-alert class="alert '.($colour ? $colour : 'alert-secondary').'">';
+      echo get_theme_mod( 'ngisweden_banner_message_text' );
       echo '</div></div>';
     }
     ?>

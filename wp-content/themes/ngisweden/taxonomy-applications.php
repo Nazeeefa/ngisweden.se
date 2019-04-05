@@ -110,18 +110,18 @@
       if(has_excerpt()) {
         $card_output .= '<p class="card-text">'.strip_tags(get_the_excerpt()).'</p>';
       }
-      // General keywords
-      $method_keywords = get_the_terms(null, 'method_keywords');
-      if ($method_keywords && !is_wp_error($method_keywords)){
-        foreach($method_keywords as $kw){
-          $card_output .= '<a href="'.get_term_link($kw->slug, 'method_keywords').'" rel="tag" class="badge badge-secondary method-keyword '.$kw->slug.'">'.$kw->name.'</a> ';
-        }
-      }
       // Sequencing type
       $method_seqtypes = get_the_terms(null, 'sequencing_type');
       if ($method_seqtypes && !is_wp_error($method_seqtypes)){
         foreach($method_seqtypes as $kw){
           $card_output .= '<a href="'.get_term_link($kw->slug, 'sequencing_type').'" rel="tag" class="badge badge-info method-keyword '.$kw->slug.'">'.$kw->name.'</a> ';
+        }
+      }
+      // General keywords
+      $method_keywords = get_the_terms(null, 'method_keywords');
+      if ($method_keywords && !is_wp_error($method_keywords)){
+        foreach($method_keywords as $kw){
+          $card_output .= '<a href="'.get_term_link($kw->slug, 'method_keywords').'" rel="tag" class="badge badge-secondary method-keyword '.$kw->slug.'">'.$kw->name.'</a> ';
         }
       }
       $card_output .= '</div></div>';
@@ -150,7 +150,7 @@
   foreach($card_decks as $id => $deck){
     if(count($deck['cards']) > 0){
       // Card deck header
-      echo '<a class="nav-link '.($first ? 'active' : '').'" id="v-pills-'.$id.'-tab" data-toggle="pill" href="#v-pills-'.$id.'" role="tab" aria-controls="v-pills-'.$id.'" '.($first ? 'aria-selected="true"' : '').'>
+      echo '<a class="nav-link '.($first ? 'active' : '').'" id="'.$id.'-tab" data-toggle="pill" href="#'.$id.'" role="tab" aria-controls="'.$id.'" '.($first ? 'aria-selected="true"' : '').'>
         '.$deck['title'].' <span class="badge badge-light">'.count($deck['cards']).'
       </a>';
       $first = false;
@@ -165,7 +165,7 @@
   foreach($card_decks as $id => $deck){
     if(count($deck['cards']) > 0){
       // Start of tab content area
-      echo '<div class="tab-pane fade '.($first ? 'show active' : '').'" id="v-pills-'.$id.'" role="tabpanel" aria-labelledby="v-pills-'.$id.'-tab">';
+      echo '<div class="tab-pane fade '.($first ? 'show active' : '').'" id="'.$id.'" role="tabpanel" aria-labelledby="'.$id.'-tab">';
       $postcounter = -1;
       foreach($deck['cards'] as $card){
         $postcounter++;

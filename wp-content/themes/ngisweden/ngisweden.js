@@ -20,4 +20,33 @@ jQuery(function($) {
         $('#main_navbar .wpdreams_asl_container').removeClass('ngifocus');
         $('#menu-main-navigation, #menu-main-order-btn').delay(400).fadeIn();
     });
+
+    // Deep linking to pill navs
+    let url = location.href.replace(/\/$/, "");
+    if (location.hash) {
+        const hash = url.split("#");
+        if($('#'+hash[1]).length == 1 && $('#'+hash[1]).hasClass('tab-pane')){
+            // Highlight the nav pill buttons
+            $('.nav-pills a.nav-link').removeClass("active");
+            $('.nav-pills a.nav-link[href="#'+hash[1]+'"]').addClass("active");
+            // Show the content
+            $('.tab-content .tab-pane').removeClass('show active');
+            $('#'+hash[1]).tab('show');
+            url = location.href.replace(/\/#/, "#");
+            history.replaceState(null, null, url);
+            setTimeout(() => {
+                $(window).scrollTop(0);
+            }, 400);
+        }
+    }
+    $('a[data-toggle="pill"]').on("click", function() {
+        let newUrl;
+        const hash = $(this).attr("href");
+        if(hash == "#home") {
+            newUrl = url.split("#")[0];
+        } else {
+            newUrl = url.split("#")[0] + hash;
+        }
+        history.replaceState(null, null, newUrl);
+    });
 });
