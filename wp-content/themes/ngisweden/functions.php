@@ -66,3 +66,4 @@ require_once('functions/theme_customiser.php');
 // Theme shortcodes
 require_once('functions/shortcodes/homepage.php');
 require_once('functions/shortcodes/publications.php');
+require_once('functions/shortcodes/github_repo.php');

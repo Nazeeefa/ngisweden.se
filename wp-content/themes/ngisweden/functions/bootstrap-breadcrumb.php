@@ -123,9 +123,17 @@ function bootstrap_breadcrumb() {
       $categories = get_the_terms(null, 'applications');
 
       // Main Applications page - get by looking for page slug 'applications'
-      $applications_page = get_page_by_path( 'applications' );
-      if($applications_page){
-        $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $applications_page ) ) . '">' . get_the_title( $applications_page ) . '</a></li>';
+      $page_slug = false;
+      if(is_singular( 'methods' )){ $page_slug = 'applications'; }
+      if(is_singular( 'bioinformatics' )){ $page_slug = 'bioinformatics'; }
+      if($page_slug){
+        $slug_page = get_page_by_path( $page_slug );
+        if($slug_page){
+          $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $slug_page ) ) . '">' . get_the_title( $slug_page ) . '</a></li>';
+        } else {
+          // Just fake it - TODO: Must be a better way
+          $html .= '<li class="breadcrumb-item"><a href="'.esc_url( get_bloginfo('url').'/'.$page_slug ).'">' . ucfirst($page_slug) . '</a></li>';
+        }
       }
 
       if ( $categories[0] ) {
