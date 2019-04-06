@@ -66,7 +66,7 @@ See [NGI Sweden Theme](#ngi-sweden-theme) for more detail.
 
 ```
 [github_badge repo=https://github.com/user/repo]
-[github_badge repo=https://github.com/ewels/MultiQC centred=1]
+[github_badge repo=https://github.com/ewels/MultiQC icon=https://website.com/logo.png centred=1]
 
 [ngisweden_publications]
 [ngisweden_publications title=0 randomise=0 num=10 collabs=10]
@@ -206,10 +206,15 @@ To make a nice card showing the details of a GitHub repository, use the followin
 
 Make sure to use the full GitHub URL. Only works with repositories.
 
-To make the card centred on the page, add `centred=1`, eg:
+To make the card centred on the page, add `centred=1`.
+
+To use a custom image for the icon, use `icon=url`
+
+
+For example:
 
 ```
-[github_badge repo=https://github.com/ewels/MultiQC centred=1]
+[github_badge repo=https://github.com/ewels/MultiQC icon=https://multiqc.info/logos/MultiQC_logo_square.png centred=1]
 ```
 
 ### Publication list

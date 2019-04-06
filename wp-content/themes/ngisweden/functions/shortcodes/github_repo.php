@@ -7,6 +7,7 @@ function github_badge_shortcode($atts_raw){
     // Shortcode attribute defaults
     $atts = shortcode_atts( array(
         'repo' => '',
+        'icon' => '',
         'centred' => 0
     ), $atts_raw);
 
@@ -60,11 +61,15 @@ function github_badge_shortcode($atts_raw){
     if($repo['homepage'] && strlen(trim($repo['homepage']))){
         $homepage = ' - <a href="'.$repo['homepage'].'" target="_blank">'.$repo['homepage'].'</a>';
     }
+    $icon_url = $repo['owner']['avatar_url'];
+    if(strlen(trim($atts['icon']))){
+        $icon_url = $atts['icon'];
+    }
     $html = '
     <div class="card mb-3 '.$centre_margin.'" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img src="'.$repo['owner']['avatar_url'].'" class="card-img p-2" alt="'.$repo['owner']['login'].'">
+                <img src="'.$icon_url.'" class="card-img p-4" alt="'.$repo['owner']['login'].'">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
