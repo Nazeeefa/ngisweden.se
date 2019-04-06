@@ -1,4 +1,19 @@
-<?php get_header(); ?>
+<?php get_header();
+
+// Recursive function to get application parents for the little applications badge
+function singlepage_get_application_parents( $id, $visited = array() ) {
+  $chain = '';
+  $parent = get_term( $id, 'applications' );
+  if ( is_wp_error( $parent ) ) return $parent;
+  if ( $parent->parent && ( $parent->parent != $parent->term_id ) && !in_array( $parent->parent, $visited ) ) {
+    $visited[] = $parent->parent;
+    $chain .= custom_get_application_parents( $parent->parent, $visited );
+  }
+  $chain .= $parent->name.' &raquo; ';
+  return $chain;
+}
+
+?>
 
 <div class="ngisweden-sidebar-page">
   <div class="container main-page">
@@ -58,12 +73,18 @@
             $method_applications = get_the_terms(null, 'applications');
             if ($method_applications && !is_wp_error($method_applications)){
               foreach($method_applications as $kw){
-                $method_application_badges .= '<a href="'.get_term_link($kw->slug, 'applications').'" rel="tag" class="badge badge-success method-keyword '.$kw->slug.'">'.$kw->name.'</a> ';
+                $parents = '';
+                if ( $kw->parent != 0 ) {
+                  $parents = singlepage_get_application_parents( $kw->parent );
+                }
+                $method_application_badges .= '<a href="'.get_term_link($kw->slug, 'applications').'" rel="tag" class="badge badge-success method-keyword '.$kw->slug.'">'.$parents.$kw->name.'</a> ';
               }
             }
 
             echo '<h1>'.$status_icon.get_the_title().'</h1>';
-            echo '<p class="methods-lead">'.get_the_excerpt().'</p>';
+            if(get_the_excerpt() and strlen(trim(get_the_excerpt()))){
+                echo '<p class="methods-lead">'.get_the_excerpt().'</p>';
+            }
             the_content();
           }
         }

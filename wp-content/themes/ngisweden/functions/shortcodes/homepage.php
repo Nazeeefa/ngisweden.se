@@ -4,7 +4,7 @@
 
 function ngisweden_homepage_applications($atts_raw){
 
-  $output = '<div class="homepage-applications">';
+  $output = '<div class="homepage-applications" id="applications-shortcode-div">';
 
   // Print the ajax search lite search form
   $output .= do_shortcode('[wpdreams_ajaxsearchlite]');

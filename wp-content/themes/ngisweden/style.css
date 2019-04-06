@@ -250,7 +250,7 @@ footer {
     width: 100%;
 }
 .homepage-applications .homepage-application a,
-#front-page-container .homepage-applications .wpdreams_asl_container .probox {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox {
     display: block;
     background-color: #e7ecf7;
     padding: 1rem;
@@ -261,50 +261,50 @@ footer {
     border: none;
 }
 .homepage-applications .homepage-application a,
-#front-page-container .homepage-applications .wpdreams_asl_container .probox form input {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox form input {
     font-size: 21px;
     color: #183c55;
     line-height: 3rem;
     text-decoration: none;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox {
     height: 48px;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier,
-#front-page-container .homepage-applications div.asl_m .probox .proclose svg,
-#front-page-container .homepage-applications div.asl_w .probox div.prosettings {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier,
+#applications-shortcode-div.homepage-applications div.asl_m .probox .proclose svg,
+#applications-shortcode-div.homepage-applications div.asl_w .probox div.prosettings {
     background-image: none;
     border: 0;
     border-radius: 0 0 0 0;
     box-shadow: none;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier {
     float: left;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier,
-#front-page-container .homepage-applications div.asl_w .probox .proloading,
-#front-page-container .homepage-applications div.asl_w .probox .proclose,
-#front-page-container .homepage-applications div.asl_w .probox .prosettings {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier,
+#applications-shortcode-div.homepage-applications div.asl_w .probox .proloading,
+#applications-shortcode-div.homepage-applications div.asl_w .probox .proclose,
+#applications-shortcode-div.homepage-applications div.asl_w .probox .prosettings {
     width: 48px;
     height: 48px;
 }
-#front-page-container .homepage-applications div.asl_w .probox .proclose svg {
+#applications-shortcode-div.homepage-applications div.asl_w .probox .proclose svg {
     background: #4a89bf;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox .promagnifier .innericon svg {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier .innericon svg {
     width: 35px;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox .proinput {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .proinput {
     width: calc(100% - 120px);
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox .proinput input {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .proinput input {
     height: 48px;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox .proinput input.autocomplete {
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .proinput input.autocomplete {
     margin-top: -48px !important;
 }
-#front-page-container .homepage-applications .wpdreams_asl_container .probox:focus-within,
-#front-page-container .homepage-applications .wpdreams_asl_container .probox:hover,
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox:focus-within,
+#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox:hover,
 .homepage-applications .homepage-application a:hover,
 .homepage-applications .homepage-application a:focus,
 .homepage-applications .homepage-application a:active {

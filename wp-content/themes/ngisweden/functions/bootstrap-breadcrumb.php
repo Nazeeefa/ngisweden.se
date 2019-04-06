@@ -85,6 +85,13 @@ function bootstrap_breadcrumb() {
     elseif ( is_tax('applications') ) {
       $category = get_term_by( 'slug', get_query_var( 'term' ), 'applications' );
 
+      // Main Applications page - get by looking for page slug 'applications'
+      $applications_page = get_page_by_path( 'applications' );
+      if($applications_page){
+        $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $applications_page ) ) . '">' . get_the_title( $applications_page ) . '</a></li>';
+      }
+
+      // Get upstream applications
       if ( $category->parent != 0 ) {
         $html .= custom_get_application_parents( $category->parent );
       }
@@ -125,6 +132,12 @@ function bootstrap_breadcrumb() {
 
     elseif ( is_singular( 'methods' ) ) {
       $categories = get_the_terms(null, 'applications');
+
+      // Main Applications page - get by looking for page slug 'applications'
+      $applications_page = get_page_by_path( 'applications' );
+      if($applications_page){
+        $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $applications_page ) ) . '">' . get_the_title( $applications_page ) . '</a></li>';
+      }
 
       if ( $categories[0] ) {
         $html .= custom_get_application_parents($categories[0]);
