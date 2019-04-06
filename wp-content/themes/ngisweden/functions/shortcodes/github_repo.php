@@ -69,7 +69,7 @@ function github_badge_shortcode($atts_raw){
     $full_name = str_replace('/', '<wbr>/<wbr>', $repo['full_name']);
     $print_url = str_replace('/', '<wbr>/<wbr>', $repo['html_url']);
     $html = '
-    <div class="card mb-3 '.$centre_margin.'" style="max-width: 540px;">
+    <div class="card mt-2 mb-3 '.$centre_margin.'" style="max-width: 540px;">
         <div class="row no-gutters">
             <div class="col-md-4">
                 <img src="'.$icon_url.'" class="card-img p-4" alt="'.$repo['owner']['login'].'">

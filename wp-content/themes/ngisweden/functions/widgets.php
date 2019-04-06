@@ -106,11 +106,12 @@ class FooterSocialButtons extends WP_Widget {
         }
         echo '<div class="ngisweden-footer-social">
             <a href="https://twitter.com/ngisweden?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @ngisweden</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-            <br>
-            <script src="https://apis.google.com/js/platform.js"></script>
+
+            <br><script src="https://apis.google.com/js/platform.js"></script>
             <div class="g-ytsubscribe" data-channelid="UC7vNQ8xMt2zViIdtngTCTsw" data-layout="default" data-count="default"></div>
-            <br>
-            <a class="github-button" href="https://github.com/NationalGenomicsInfrastructure" aria-label="Follow @NationalGenomicsInfrastructure on GitHub">Follow @NationalGenomicsInfrastructure</a>
+
+            <br><a class="github-button" href="https://github.com/NationalGenomicsInfrastructure" aria-label="Follow @NationalGenomicsInfrastructure on GitHub">Follow @NationalGenomicsInfrastructure</a>
+            <br><a class="github-button" href="https://github.com/SciLifeLab" aria-label="Follow @SciLifeLab on GitHub">Follow @SciLifeLab</a>
             <script async defer src="https://buttons.github.io/buttons.js"></script>
         </div>';
         echo $args['after_widget'];
