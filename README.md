@@ -11,6 +11,7 @@
 
 * [Quick Reference](#quick-reference)
     * [Banner Messages](#banner-messages)
+    * [Shortcodes](#shortcodes)
     * [Applications pages](#applications-pages)
     * [Minor things](#minor-things)
 * [Content style guide](#content-style-guide)
@@ -23,19 +24,22 @@
         * [Template files](#template-files)
         * [CSS Styles](#css-styles)
         * [Bonus functionality](#bonus-functionality)
+        * [GitHub Repo Badge](#github-repo-badge)
+        * [Publication list](#publication-list)
+        * [Homepage application launcher](#homepage-application-launcher)
         * [WordPress Admin interface](#wordpress-admin-interface)
     * [_NGI Custom Content_ plugin](#ngi-custom-content-plugin)
         * [Post types](#post-types)
         * [Taxonomies](#taxonomies)
         * [Applications](#applications)
         * [Statuses](#statuses)
-        * [Publication list](#publication-list)
-        * [Homepage application launcher](#homepage-application-launcher)
 * [Developing the website code](#developing-the-website-code)
     * [Testing locally](#testing-locally)
     * [Installing the website](#installing-the-website)
     * [Required plugins](#required-plugins)
 * [Credits](#credits)
+
+
 
 
 # Quick Reference
@@ -55,6 +59,20 @@ Warning - sample delivery closed for vacations!
 ```
 
 Banner messages are shown on every page and are kind of annoying, so use sparingly.
+
+### Shortcodes
+
+See [NGI Sweden Theme](#ngi-sweden-theme) for more detail.
+
+```
+[github_badge repo=https://github.com/user/repo]
+[github_badge repo=https://github.com/ewels/MultiQC centred=1]
+
+[ngisweden_publications]
+[ngisweden_publications title=0 randomise=0 num=10 collabs=10]
+
+[homepage_applications]
+```
 
 ### Applications pages
 
@@ -175,11 +193,60 @@ Note that it is also possible to add custom CSS through the admin interface in t
 
 In addition to just changing the way that WordPress builds web pages (the "front end"), the theme also creates a few new ways to add content:
 
-* Shortcodes - `[ngisweden_publications]` and `[homepage_applications]`
+* Shortcodes - `[ngisweden_publications]`, `[github_badge]`, `[homepage_applications]`
 * Widgets - `NGI Footer Logos` and `NGI Footer Social Buttons`
 * Banner Messages in the Theme Customiser.
 
-See the [Quick Reference](#quick-reference) section at the top for instructions on what these do and how to use them.
+### GitHub Repo Badge
+To make a nice card showing the details of a GitHub repository, use the following:
+
+```
+[github_badge repo=https://github.com/user/repo]
+```
+
+Make sure to use the full GitHub URL. Only works with repositories.
+
+To make the card centred on the page, add `centred=1`, eg:
+
+```
+[github_badge repo=https://github.com/ewels/MultiQC centred=1]
+```
+
+### Publication list
+
+Use the following shortcode:
+
+```
+[ngisweden_publications]
+```
+
+Arguments:
+* `title` - Show or hide the title above the list
+    * `0` to disable, `1` to enable. Default: `1`
+* `randomise` - Randomise the list, or show the most recent
+    * `0` to leave sorted, `1` to randomise. Default: `1`
+* `num` - Number of publications to show in the list
+    * Any number. Default `5`
+* `collabs` - _Minimum_ number of publications that should be collaborations
+    * Any number. Default `0`
+    * If >= `num`, will show only collabs.
+    * If fewer collabs than `num` exist, list will be shorter than `num`
+
+For example, to show a sorted list with the 10 latest collaboration papers and no title:
+
+```
+[ngisweden_publications title=0 randomise=0 num=10 collabs=10]
+```
+
+### Homepage application launcher
+
+Shows the search bar and large blue buttons for the top-level method application categories.
+
+Use the following shortcode (there are currently no options):
+
+```
+[homepage_applications]
+```
 
 ### WordPress Admin interface
 
@@ -230,37 +297,7 @@ Statuses are used to show whether an application is high throughput and used in 
 Setting this decides on the colour of the little ribbon that goes over the corner of the cards on the application pages.
 
 
-### Publication list
-Use the following shortcode:
-```
-[ngisweden_publications]
-```
 
-Arguments:
-* `title` - Show or hide the title above the list
-    * `0` to disable, `1` to enable. Default: `1`
-* `randomise` - Randomise the list, or show the most recent
-    * `0` to leave sorted, `1` to randomise. Default: `1`
-* `num` - Number of publications to show in the list
-    * Any number. Default `5`
-* `collabs` - _Minimum_ number of publications that should be collaborations
-    * Any number. Default `0`
-    * If >= `num`, will show only collabs.
-    * If fewer collabs than `num` exist, list will be shorter than `num`
-
-For example, to show a sorted list with the 10 latest collaboration papers and no title:
-```
-[ngisweden_publications title=0 randomise=0 num=10 collabs=10]
-```
-
-### Homepage application launcher
-Shows the search bar and large blue buttons for the top-level method application categories.
-
-Use the following shortcode (there are currently no options):
-
-```
-[homepage_applications]
-```
 
 # Developing the website code
 
