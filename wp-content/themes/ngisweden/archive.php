@@ -150,7 +150,7 @@
   echo $page_intro;
 
   // Print the tab headers
-  echo '<div class="row mt-3 mb-3"><div class="col-2"><div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">';
+  echo '<div class="row mt-3 mb-3"><div class="col-sm-2 mb-3"><div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">';
   $first = true;
   foreach($card_decks as $id => $deck){
     if(count($deck['cards']) > 0){
@@ -164,7 +164,7 @@
   echo '</div></div>';
 
   // Print each set of card decks
-  echo '<div class="col-10"><div class="tab-content">';
+  echo '<div class="col-sm-10"><div class="tab-content">';
   $cards_per_row = 2;
   $first = true;
   foreach($card_decks as $id => $deck){
