@@ -12,11 +12,17 @@
   // Start by setting defaults using the values from the s type
   $term = get_queried_object();
   $term_meta = get_option( "application_page_".$term->term_id );
-  $page_title = $term->name;
+  if($term->label){
+    $page_title = $term->label;
+  } else {
+    $page_title = $term->name;
+  }
   // If we're not looking at applications, prepend the taxonomy type
   if($term->taxonomy != 'applications'){
     $taxonomy = get_taxonomy($term->taxonomy);
-    $page_title = $taxonomy->label.': '.$term->name;
+    if($taxonomy) {
+      $page_title = $taxonomy->label.': '.$page_title;
+    }
   }
   $page_intro = '';
   $app_description = trim(strip_tags(term_description($term->term_id, 'applications')));
