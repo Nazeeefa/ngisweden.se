@@ -9,9 +9,9 @@
  * @param array $visited Optional. Already linked to categories to prevent duplicates.
  * @return string|WP_Error A list of category parents on success, WP_Error on failure.
  */
-function custom_get_category_parents( $id, $visited = array() ) {
+function custom_get_tax_parents( $id, $visited = array(), $tax_type = 'category' ) {
   $chain = '';
-  $parent = get_term( $id, 'category' );
+  $parent = get_term( $id, $tax_type );
 
   if ( is_wp_error( $parent ) )
     return $parent;
@@ -20,26 +20,7 @@ function custom_get_category_parents( $id, $visited = array() ) {
 
   if ( $parent->parent && ( $parent->parent != $parent->term_id ) && !in_array( $parent->parent, $visited ) ) {
     $visited[] = $parent->parent;
-    $chain .= custom_get_category_parents( $parent->parent, $visited );
-  }
-
-  $chain .= '<li class="breadcrumb-item"><a href="' . esc_url( get_category_link( $parent->term_id ) ) . '">' . $name. '</a>' . '</li>';
-
-  return $chain;
-}
-
-function custom_get_application_parents( $id, $visited = array() ) {
-  $chain = '';
-  $parent = get_term( $id, 'applications' );
-
-  if ( is_wp_error( $parent ) )
-    return $parent;
-
-  $name = $parent->name;
-
-  if ( $parent->parent && ( $parent->parent != $parent->term_id ) && !in_array( $parent->parent, $visited ) ) {
-    $visited[] = $parent->parent;
-    $chain .= custom_get_application_parents( $parent->parent, $visited );
+    $chain .= custom_get_tax_parents( $parent->parent, $visited, $tax_type );
   }
 
   $chain .= '<li class="breadcrumb-item"><a href="' . esc_url( get_category_link( $parent->term_id ) ) . '">' . $name. '</a>' . '</li>';
@@ -65,7 +46,7 @@ function bootstrap_breadcrumb() {
       $categories = get_the_category($parent->ID);
 
       if ( $categories[0] ) {
-        $html .= custom_get_category_parents($categories[0]);
+        $html .= custom_get_tax_parents($categories[0], array(), 'category');
       }
 
       $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $parent ) ) . '">' . $parent->post_title . '</a></li>';
@@ -75,25 +56,33 @@ function bootstrap_breadcrumb() {
     elseif ( is_category() ) {
       $category = get_category( get_query_var( 'cat' ) );
 
+      // Main News & Events page - get by looking for page slug 'applications'
+      $root_page = get_page_by_path( 'news-events' );
+      if($root_page){
+        $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $root_page ) ) . '">' . get_the_title( $root_page ) . '</a></li>';
+      }
+
       if ( $category->parent != 0 ) {
-        $html .= custom_get_category_parents( $category->parent );
+        $html .= custom_get_tax_parents( $category->parent, array(), 'category' );
       }
 
       $html .= '<li class="breadcrumb-item active">' . single_cat_title( '', false ) . '</li>';
     }
 
-    elseif ( is_tax('applications') ) {
-      $category = get_term_by( 'slug', get_query_var( 'term' ), 'applications' );
+    elseif ( is_tax() ) {
+      $term = get_queried_object();
+      $taxonomy = get_taxonomy($term->taxonomy);
+      $page_title = $taxonomy->label.': '.$term->name;
 
-      // Main Applications page - get by looking for page slug 'applications'
-      $applications_page = get_page_by_path( 'applications' );
-      if($applications_page){
-        $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $applications_page ) ) . '">' . get_the_title( $applications_page ) . '</a></li>';
+      // Main Applications page - get by looking for page with same slug as the tax slug
+      $tax_page = get_page_by_path( $taxonomy->name );
+      if($tax_page){
+        $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $tax_page ) ) . '">' . get_the_title( $tax_page ) . '</a></li>';
       }
 
-      // Get upstream applications
-      if ( $category->parent != 0 ) {
-        $html .= custom_get_application_parents( $category->parent );
+      // Get upstream tax
+      if ( $term->parent != 0 ) {
+        $html .= custom_get_tax_parents( $term->parent, array(), $taxonomy->slug );
       }
 
       $html .= '<li class="breadcrumb-item active">' . single_cat_title( '', false ) . '</li>';
@@ -124,13 +113,13 @@ function bootstrap_breadcrumb() {
       $categories = get_the_category();
 
       if ( $categories[0] ) {
-        $html .= custom_get_category_parents($categories[0]);
+        $html .= custom_get_tax_parents($categories[0], array(), 'category' );
       }
 
       $html .= '<li class="breadcrumb-item active">' . get_the_title() . '</li>';
     }
 
-    elseif ( is_singular( 'methods' ) ) {
+    elseif ( is_singular( 'methods' ) || is_singular( 'bioinformatics' ) ) {
       $categories = get_the_terms(null, 'applications');
 
       // Main Applications page - get by looking for page slug 'applications'
@@ -140,7 +129,7 @@ function bootstrap_breadcrumb() {
       }
 
       if ( $categories[0] ) {
-        $html .= custom_get_application_parents($categories[0]);
+        $html .= custom_get_tax_parents($categories[0], array(), 'applications');
       }
 
       $html .= '<li class="breadcrumb-item active">' . get_the_title() . '</li>';
