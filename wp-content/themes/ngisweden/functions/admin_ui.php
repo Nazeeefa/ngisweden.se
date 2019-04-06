@@ -25,11 +25,19 @@ function my_admin_bar_render() {
     $wp_admin_bar->remove_node('new-media');
     $wp_admin_bar->remove_node('new-cptbc');
     $wp_admin_bar->remove_node('new-user');
+    $wp_admin_bar->remove_node('new-location');
+    $wp_admin_bar->remove_node('new-event-recurring');
+    $wp_admin_bar->remove_node('new-cookielawinfo');
     // Rename posts to news
     $new_post_node = $wp_admin_bar->get_node('new-post');
     $new_post_node->title = 'News';
-    $wp_admin_bar->remove_node('new-post'); # Remove first so that it's at the bottom
+    // Move News to the bottom
+    $wp_admin_bar->remove_node('new-post');
     $wp_admin_bar->add_node($new_post_node);
+    // Move New Event to bottom
+    $new_event_node = $wp_admin_bar->get_node('new-event');
+    $wp_admin_bar->remove_node('new-event');
+    $wp_admin_bar->add_node($new_event_node);
 }
 add_action( 'wp_before_admin_bar_render', 'my_admin_bar_render' );
 
