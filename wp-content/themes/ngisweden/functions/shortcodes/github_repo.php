@@ -65,6 +65,9 @@ function github_badge_shortcode($atts_raw){
     if(strlen(trim($atts['icon']))){
         $icon_url = $atts['icon'];
     }
+    // Encourage line-breaks around the separator, if anywhere
+    $full_name = str_replace('/', '<wbr>/<wbr>', $repo['full_name']);
+    $print_url = str_replace('/', '<wbr>/<wbr>', $repo['html_url']);
     $html = '
     <div class="card mb-3 '.$centre_margin.'" style="max-width: 540px;">
         <div class="row no-gutters">
@@ -73,8 +76,8 @@ function github_badge_shortcode($atts_raw){
             </div>
             <div class="col-md-8">
                 <div class="card-body">
-                    <h5 class="mb-0"><a href="'.$repo['html_url'].'" target="_blank" class="text-body">'.$repo['full_name'].'</a></h5>
-                    <p class="card-text mb-1"><a href="'.$repo['html_url'].'" target="_blank" class="small text-muted">'.$repo['html_url'].'</a></p>
+                    <h5 class="mb-0"><a href="'.$repo['html_url'].'" target="_blank" class="text-body">'.$full_name.'</a></h5>
+                    <p class="mb-1"><small><a href="'.$repo['html_url'].'" target="_blank" class="small text-muted">'.$print_url.'</a></small></p>
                     <p class="card-text small">'.$repo['description'].$homepage.'</p>
                     <div class="row small text-muted">
                         <div class="col"><i class="fas fa-eye"></i> '.$repo['watchers_count'].'</div>
