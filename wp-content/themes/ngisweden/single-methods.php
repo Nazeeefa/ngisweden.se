@@ -82,7 +82,7 @@ function singlepage_get_application_parents( $id, $visited = array() ) {
             }
 
             echo '<h1>'.$status_icon.get_the_title().'</h1>';
-            if(get_the_excerpt() and strlen(trim(get_the_excerpt()))){
+            if(has_excerpt() && get_the_excerpt() and strlen(trim(get_the_excerpt()))){
                 echo '<p class="methods-lead">'.get_the_excerpt().'</p>';
             }
             the_content();
@@ -123,7 +123,9 @@ function singlepage_get_application_parents( $id, $visited = array() ) {
               while ( $series->have_posts() ) {
                 $series->the_post();
                 echo '<p class="mb-0"><a href="'.get_the_permalink().'">'.get_the_title().'</a></p>';
-                echo '<p class="small text-muted">'.get_the_excerpt().'</p>';
+                if(has_excerpt() && get_the_excerpt() and strlen(trim(get_the_excerpt()))){
+                  echo '<p class="small text-muted">'.get_the_excerpt().'</p>';
+                }
               }
             }
           }
