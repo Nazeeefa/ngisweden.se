@@ -107,7 +107,7 @@ function ngisweden_pubs_shortcode($atts_raw){
             if(strtoupper($author['family']) == $author['family']){
                 $author['family'] = ucwords(strtolower($author['family']));
             }
-            $authors[] = '<span class="pub-author" data-toggle="tooltip" title="'.$author['given'].' '.$author['family'].'">'.$author['initials'].' '.$author['family'].'</span>';
+            $authors[] = '<span class="pub-author" title="'.$author['given'].' '.$author['family'].'">'.$author['initials'].' '.$author['family'].'</span>';
         }
 
         // Make publication ref string
@@ -143,12 +143,12 @@ function ngisweden_pubs_shortcode($atts_raw){
         }
         $modals .= '
         <div class="modal fade" id="pub_'.$pub['iuid'].'" tabindex="-1" role="dialog" aria-hidden="true">
-          <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+          <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <div class="modal-title">
                     <h5>'.$pub['title'].'</h5>
-                    <p class="font-weight-light pub-authors">'.implode(', ', $authors).'</p>
+                    <div class="font-weight-light pub-authors">'.implode(', ', $authors).'</div>
                     <p class="mb-0">'.$collab_badge.$pub_ref.'</p>
                 </div>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>

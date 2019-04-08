@@ -68,6 +68,9 @@ See [NGI Sweden Theme](#ngi-sweden-theme) for more detail.
 [github_badge repo=https://github.com/user/repo]
 [github_badge repo=https://github.com/ewels/MultiQC icon=https://website.com/logo.png centred=1]
 
+[mailchimp_subscribe]
+[mailchimp_subscribe form=1 btn_text="Sign Up" btn_colour="outline-danger"]
+
 [ngisweden_publications]
 [ngisweden_publications title=0 randomise=0 num=10 collabs=10]
 
@@ -216,6 +219,51 @@ For example:
 ```
 [github_badge repo=https://github.com/ewels/MultiQC icon=https://multiqc.info/logos/MultiQC_logo_square.png centred=1]
 ```
+
+### MailChimp mailing list subscribe form
+Insert a form for people to sign up to the mailing list.
+
+```
+[mailchimp_subscribe]
+```
+
+By default, the shortcode will just produce a button.
+Clicking that will launch a pop-up modal with the sign-up form.
+
+Use `form=1` to have an in-page form without the pop-up modal:
+
+```
+[mailchimp_subscribe form=1]
+```
+
+Customise the button text and colour with `btn_text` and `btn_colour`:
+
+```
+[mailchimp_subscribe form=1 btn_text="Sign Up" btn_colour="outline-danger"]
+```
+
+Button colours take the Bootstrap button classes, without the `btn-` prefix.
+See [the Bootstrap documentation](https://getbootstrap.com/docs/4.3/components/buttons/#examples) for further reference.
+
+Available:
+
+* `primary` - Blue
+* `secondary` - Grey
+* `success` - Green
+* `danger` - Red
+* `warning` - Orange
+* `info` - Turquoisee
+* `light` - Light grey
+* `dark` - Dark grey
+* `link` - Link text
+* `outline-primary` - Blue outline
+* `outline-secondary` - Grey outline
+* `outline-success` - Green outline
+* `outline-danger` - Red outline
+* `outline-warning` - Orange outline
+* `outline-info` - Turquoisee outline
+* `outline-light` - Light grey outline
+* `outline-dark` - Dark grey outline
 
 ### Publication list
 

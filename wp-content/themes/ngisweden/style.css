@@ -359,6 +359,10 @@ footer {
 .ngisweden-publications .list-pub-collab {
     border-left: 2px solid #4986e7 !important;
 }
+.pub-authors {
+    max-height: 55px;
+    overflow-y: scroll;
+}
 .pub-author {
     cursor: default;
     white-space: nowrap;
