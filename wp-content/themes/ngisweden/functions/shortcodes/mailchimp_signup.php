@@ -7,11 +7,19 @@ function ngisweden_mailchimp_subscribe_sc($atts_raw){
     // Shortcode attribute defaults
     $atts = shortcode_atts( array(
         'form' => 0,
+        'icon' => 1,
         'btn_text' => 'Subscribe',
-        'btn_colour' => 'primary'
+        'btn_colour' => 'primary',
+        'btn_size' => ''
     ), $atts_raw);
     $btn_txt = $atts['btn_text'];
     $btn_colour = $atts['btn_colour'];
+    if($atts['btn_size'] == 'large'){
+        $btn_colour .= ' btn-lg';
+    }
+    if($atts['btn_size'] == 'small'){
+        $btn_colour .= ' btn-sm';
+    }
 
     // Just the form, will display in the page
     if($atts['form']){
@@ -29,6 +37,9 @@ HTML;
     // Show a button that opens a modal with the form
     else {
         $privacy_policy_link = get_the_privacy_policy_link();
+        if($atts['icon']){
+            $btn_txt = '<i class="fas fa-envelope mr-1"></i> '.$btn_txt;
+        }
         $html = <<<HTML
         <button type="button" class="btn btn-$btn_colour mb-2" data-toggle="modal" data-target="#exampleModal">
             $btn_txt

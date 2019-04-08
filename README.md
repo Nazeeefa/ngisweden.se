@@ -236,16 +236,22 @@ Use `form=1` to have an in-page form without the pop-up modal:
 [mailchimp_subscribe form=1]
 ```
 
-Customise the button text and colour with `btn_text` and `btn_colour`:
+Customise the button text and colour with `btn_text`, `btn_colour`,
+`btn_size` and `icon`:
 
 ```
-[mailchimp_subscribe form=1 btn_text="Sign Up" btn_colour="outline-danger"]
+[mailchimp_subscribe form=1 btn_text="Sign Up" btn_colour="outline-danger" btn_size="small" icon=0]
 ```
 
-Button colours take the Bootstrap button classes, without the `btn-` prefix.
-See [the Bootstrap documentation](https://getbootstrap.com/docs/4.3/components/buttons/#examples) for further reference.
+* `icon`: Flag to show or hides the envelope icon.
+    * On by default. Set to `0` to disable.
+* `btn_size` can be `small` or `large`. Medium by default.
+* `btn_text` changes the text in the main button.
+* `btn_colour` changes the colour of the main button
+    * Button colours take the Bootstrap button classes, without the `btn-` prefix.
+    * See [the Bootstrap documentation](https://getbootstrap.com/docs/4.3/components/buttons/#examples) for further reference.
 
-Available:
+Available colours:
 
 * `primary` - Blue
 * `secondary` - Grey
