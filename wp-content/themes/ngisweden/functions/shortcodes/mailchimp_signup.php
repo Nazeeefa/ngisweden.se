@@ -36,7 +36,11 @@ HTML;
     }
     // Show a button that opens a modal with the form
     else {
-        $privacy_policy_link = get_the_privacy_policy_link();
+        $privacy_policy_link = get_privacy_policy_url();
+        $privacy_policy_btn = '';
+        if(strlen(trim($privacy_policy_link))){
+            $privacy_policy_btn = '<a href="'.$privacy_policy_link.'" class="btn btn-outline-secondary">Privacy policy</a>';
+        }
         if($atts['icon']){
             $btn_txt = '<i class="fas fa-envelope mr-1"></i> '.$btn_txt;
         }
@@ -62,7 +66,7 @@ HTML;
                             Newsletters are infrequent and we will not share your email address with any parties outside SciLifeLab.</p>
                         </div>
                         <div class="modal-footer">
-                            <a href="$privacy_policy_link" class="btn btn-outline-secondary">Privacy policy</a>
+                            $privacy_policy_btn
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <input type="submit" value="Subscribe" name="subscribe" class="btn btn-primary">
                         </div>
