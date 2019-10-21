@@ -255,11 +255,50 @@ footer {
 }
 
 
-.homepage-applications {
+.homepage_carousel_overlay {
+    position: absolute;
+    width: 100%;
+    height: 400px;
+    top: 46px;
+    left: 0;
+    z-index: 100;
+}
+.admin-bar .homepage_carousel_overlay {
+    top: 92px;
+}
+.homepage_carousel_overlay .container .row {
+    margin-top: 50px;
+    margin-bottom: 50px;
+    min-height: 300px;
+    background-color: rgba(20,20,20,0.8);
+    color: #ffffff;
+    font-size: 1.25rem;
+}
+.admin-bar .homepage_carousel_overlay img {
+    max-width: 100%;
+}
+
+.homepage-applications-flexwrap {
     display: flex;
     flex-wrap: wrap;
     align-items: stretch;
     margin: 1.5rem 0;
+}
+.homepage-applications-tabbtns.nav-pills li a.nav-link {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border: 1px solid #dee2e6;
+    border-radius: 0;
+    width: 100%;
+    padding: 1rem 1.5rem;
+}
+.homepage-applications-tabbtns.nav-pills li:first-child a.nav-link {
+    border-top-left-radius: .3rem;
+    border-bottom-left-radius: .3rem;
+}
+.homepage-applications-tabbtns.nav-pills li:last-child a.nav-link {
+    border-top-right-radius: .3rem;
+    border-bottom-right-radius: .3rem;
 }
 .homepage-applications .homepage-application {
     width: 100%;
