@@ -1,3 +1,15 @@
+/*
+Theme Name: NGI Sweden
+Theme URI: https://github.com/NationalGenomicsInfrastructure/ngisweden.se
+Author: Phil Ewels
+Author URI: https://phil.ewels.co.uk
+Description: WordPress theme for the NGI Sweden website
+Version: 0.1
+License: MIT
+License URI: https://github.com/NationalGenomicsInfrastructure/ngisweden.se/blob/master/LICENSE
+Text Domain: ngisweden
+*/
+
 @import url('https://fonts.googleapis.com/css?family=Roboto:300,400,400i,500,700');
 
 body {
@@ -45,6 +57,9 @@ code {
 }
 .admin-bar nav.fixed-top {
     top: 46px;
+}
+nav.navbar {
+    background-color: rgba(248, 249, 250, 0.95);
 }
 .navbar-brand .navbar-logo {
     height: 48px;
