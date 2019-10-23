@@ -119,12 +119,13 @@ function bootstrap_breadcrumb() {
       $html .= '<li class="breadcrumb-item active">' . get_the_title() . '</li>';
     }
 
-    elseif ( is_singular( 'methods' ) || is_singular( 'bioinformatics' ) ) {
+    elseif ( is_singular( 'methods' ) || is_singular( 'technologies' ) || is_singular( 'bioinformatics' ) ) {
       $categories = get_the_terms(null, 'applications');
 
       // Main Applications page - get by looking for page slug 'applications'
       $page_slug = false;
       if(is_singular( 'methods' )){ $page_slug = 'applications'; }
+      if(is_singular( 'technologies' )){ $page_slug = 'technologies'; }
       if(is_singular( 'bioinformatics' )){ $page_slug = 'bioinformatics'; }
       if($page_slug){
         $slug_page = get_page_by_path( $page_slug );
@@ -133,6 +134,24 @@ function bootstrap_breadcrumb() {
         } else {
           // Just fake it - TODO: Must be a better way
           $html .= '<li class="breadcrumb-item"><a href="'.esc_url( get_bloginfo('url').'/'.$page_slug ).'">' . ucfirst($page_slug) . '</a></li>';
+        }
+      }
+
+      // Parents for hierarchical post types (Technologies)
+      $parent_id = $post->post_parent;
+      $parent_pages = array();
+
+      while ( $parent_id ) {
+        $page = get_page($parent_id);
+        $parent_pages[] = $page;
+        $parent_id = $page->post_parent;
+      }
+
+      $parent_pages = array_reverse( $parent_pages );
+
+      if ( !empty( $parent_pages ) ) {
+        foreach ( $parent_pages as $parent ) {
+          $html .= '<li class="breadcrumb-item"><a href="' . esc_url( get_permalink( $parent->ID ) ) . '">' . get_the_title( $parent->ID ) . '</a></li>';
         }
       }
 

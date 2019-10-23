@@ -11,22 +11,26 @@
 
   // Start by setting defaults using the values from the s type
   $term = get_queried_object();
-  $term_meta = get_option( "application_page_".$term->term_id );
+  if(isset($term->term_id)){
+    $term_meta = get_option( "application_page_".$term->term_id );
+  }
   if($term->label){
     $page_title = $term->label;
   } else {
     $page_title = $term->name;
   }
   // If we're not looking at applications, prepend the taxonomy type
-  if($term->taxonomy != 'applications'){
+  if(isset($term->taxonomy) && $term->taxonomy != 'applications'){
     $taxonomy = get_taxonomy($term->taxonomy);
     if($taxonomy) {
       $page_title = $taxonomy->label.': '.$page_title;
     }
   }
   $page_intro = '';
-  $app_description = trim(strip_tags(term_description($term->term_id, 'applications')));
-  if($app_description && strlen($app_description)){
+  if(isset($term->term_id)){
+    $app_description = trim(strip_tags(term_description($term->term_id, 'applications')));
+  }
+  if(isset($app_description) && strlen($app_description)){
     $page_intro = '<p class="methods-lead">'.$app_description.'</p>';
   }
   $page_contents = '';
@@ -48,6 +52,10 @@
       'title' => 'Methods',
       'cards' => array()
     ),
+    'technologies' => array(
+      'title' => 'Technologies',
+      'cards' => array()
+    ),
     'bioinformatics' => array(
       'title' => 'Bioinformatics',
       'cards' => array()
@@ -59,7 +67,7 @@
   // Applications are hierarchical. If this is a parent, get the children
   //
 
-  $term_children = get_term_children($term->term_id, 'applications');
+  $term_children = @get_term_children($term->term_id, 'applications');
   foreach ($term_children as $child) {
     // Get the sub-term details
     $subterm = get_term_by('id', $child, 'applications' );
@@ -91,6 +99,11 @@
   if (have_posts()) {
     while (have_posts()) {
       the_post();
+
+      // Skip nested technologies
+      if(get_post_type() == 'technologies' && empty(get_children(get_the_ID()))){
+        continue;
+      }
 
       // Get the status icon
       $status_icon = '';
