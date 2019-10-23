@@ -278,12 +278,6 @@ footer {
     max-width: 100%;
 }
 
-.homepage-applications-flexwrap {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: stretch;
-    margin: 1.5rem 0;
-}
 .homepage-applications-tabbtns.nav-pills li a.nav-link {
     font-size: 1.25rem;
     line-height: 1.5;
@@ -300,11 +294,17 @@ footer {
     border-top-right-radius: .3rem;
     border-bottom-right-radius: .3rem;
 }
-.homepage-applications .homepage-application {
+.ngisweden-method-tabs .ngisweden-method-tab {
     width: 100%;
 }
-.homepage-applications .homepage-application a,
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox {
+.ngisweden-method-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    margin: 1.5rem 0;
+}
+.ngisweden-method-tabs .ngisweden-method-tab a,
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox {
     display: block;
     background-color: #e7ecf7;
     padding: 1rem;
@@ -314,57 +314,57 @@ footer {
     transition: background-color 0.1s ease-in-out;
     border: none;
 }
-.homepage-applications .homepage-application a,
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox form input {
+.ngisweden-method-tabs .ngisweden-method-tab a,
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox form input {
     font-size: 21px;
     color: #183c55;
     line-height: 3rem;
     text-decoration: none;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox {
     height: 48px;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier,
-#applications-shortcode-div.homepage-applications div.asl_m .probox .proclose svg,
-#applications-shortcode-div.homepage-applications div.asl_w .probox div.prosettings {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox .promagnifier,
+.ngiswden-ajax-search.ngi-tabs div.asl_m .probox .proclose svg,
+.ngiswden-ajax-search.ngi-tabs div.asl_w .probox div.prosettings {
     background-image: none;
     border: 0;
     border-radius: 0 0 0 0;
     box-shadow: none;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox .promagnifier {
     float: left;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier,
-#applications-shortcode-div.homepage-applications div.asl_w .probox .proloading,
-#applications-shortcode-div.homepage-applications div.asl_w .probox .proclose,
-#applications-shortcode-div.homepage-applications div.asl_w .probox .prosettings {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox .promagnifier,
+.ngiswden-ajax-search.ngi-tabs div.asl_w .probox .proloading,
+.ngiswden-ajax-search.ngi-tabs div.asl_w .probox .proclose,
+.ngiswden-ajax-search.ngi-tabs div.asl_w .probox .prosettings {
     width: 48px;
     height: 48px;
 }
-#applications-shortcode-div.homepage-applications div.asl_w .probox .proclose svg {
+.ngiswden-ajax-search.ngi-tabs div.asl_w .probox .proclose svg {
     background: #4a89bf;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .promagnifier .innericon svg {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox .promagnifier .innericon svg {
     width: 35px;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .proinput {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox .proinput {
     width: calc(100% - 120px);
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .proinput input {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox .proinput input {
     height: 48px;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox .proinput input.autocomplete {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox .proinput input.autocomplete {
     margin-top: -48px !important;
 }
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox:focus-within,
-#applications-shortcode-div.homepage-applications .wpdreams_asl_container .probox:hover,
-.homepage-applications .homepage-application a:hover,
-.homepage-applications .homepage-application a:focus,
-.homepage-applications .homepage-application a:active {
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox:focus-within,
+.ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox:hover,
+.ngisweden-method-tabs .ngisweden-method-tab a:hover,
+.ngisweden-method-tabs .ngisweden-method-tab a:focus,
+.ngisweden-method-tabs .ngisweden-method-tab a:active {
     background-color: #c8d3ea;
 }
-.homepage-applications .homepage-application a .application-icon {
+.ngisweden-method-tabs .ngisweden-method-tab a .application-icon {
     width: 4rem;
     height: 4rem;
     border-radius: 4rem;
@@ -377,29 +377,29 @@ footer {
     text-align: center;
     display: flex;
 }
-.homepage-applications .homepage-application a .application-icon svg {
+.ngisweden-method-tabs .ngisweden-method-tab a .application-icon svg {
     width: 40px;
     height: 40px;
     margin: auto;
     fill: #e8ecf6;
 }
-.homepage-applications .homepage-application a:hover svg,
-.homepage-applications .homepage-application a:focus svg,
-.homepage-applications .homepage-application a:active svg {
+.ngisweden-method-tabs .ngisweden-method-tab a:hover svg,
+.ngisweden-method-tabs .ngisweden-method-tab a:focus svg,
+.ngisweden-method-tabs .ngisweden-method-tab a:active svg {
     fill: #ffffff;
 }
 @media all and (min-width: 600px) {
-    .homepage-applications .homepage-application {
+    .ngisweden-method-tabs .ngisweden-method-tab {
         width: 50%;
     }
-    .homepage-applications .homepage-application:nth-child(odd) a {
+    .ngisweden-method-tabs .ngisweden-method-tab:nth-child(odd) a {
         text-align: right;
         margin-right: 0.5rem;
     }
-    .homepage-applications .homepage-application:nth-child(even) a {
+    .ngisweden-method-tabs .ngisweden-method-tab:nth-child(even) a {
         margin-left: 0.5rem;
     }
-    .homepage-applications .homepage-application:nth-child(odd) a .application-icon {
+    .ngisweden-method-tabs .ngisweden-method-tab:nth-child(odd) a .application-icon {
         float: right;
         margin: -0.5rem;
         margin-left: 1.5rem;

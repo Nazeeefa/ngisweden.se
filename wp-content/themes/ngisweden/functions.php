@@ -63,6 +63,8 @@ require_once('functions/widgets.php');
 require_once('functions/theme_customiser.php');
 
 // Theme shortcodes
+require_once('functions/shortcodes/method-tabs.php');
+require_once('functions/shortcodes/ngi-ajaxsearch.php');
 require_once('functions/shortcodes/homepage.php');
 require_once('functions/shortcodes/publications.php');
 require_once('functions/shortcodes/github_repo.php');

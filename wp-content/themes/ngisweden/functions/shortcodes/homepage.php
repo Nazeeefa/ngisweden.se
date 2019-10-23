@@ -4,10 +4,7 @@
 
 function ngisweden_homepage_applications($atts_raw){
 
-  $output = '<div class="homepage-applications" id="applications-shortcode-div">';
-
-  // Print the ajax search lite search form
-  // $output .= do_shortcode('[wpdreams_ajaxsearchlite]');
+  $output = '<div class="homepage-applications">';
 
   // Tab buttons to switch between applications and technologies
   $output .= '
@@ -19,64 +16,27 @@ function ngisweden_homepage_applications($atts_raw){
       <a href="#homepage-technologies-tabcontent" class="nav-link btn btn-light" data-toggle="tab" role="tab">Technologies</a>
     </li>
     <li class="nav-item">
-      <a href="#" class="nav-link btn btn-light disabled">Bioinformatics</a>
+      <a href="#homepage-bioinformatics-tabcontent" class="nav-link btn btn-light" data-toggle="tab" role="tab">Bioinformatics</a>
     </li>
   </ul>
   ';
 
   $output .= '<div class="tab-content">';
 
-  //
   // APPLICATIONS
-  //
-
   $output .= '<div class="tab-pane fade show active" id="homepage-applications-tabcontent">';
-  $output .= '<div class="homepage-applications-flexwrap">';
+  $output .= do_shortcode('[ngisweden_tabs]');
+  $output .= '</div>';
 
-  // Get only top-level application terms
-  $applications = get_terms( array(
-    'taxonomy' => 'applications',
-    'hide_empty' => false,
-    'parent' => 0
-  ) );
-
-  foreach($applications as $application){
-    $app_url = get_term_link($application->slug, 'applications');
-    $term_meta = get_option( "application_page_".$application->term_id );
-    $application_icon = get_stylesheet_directory().'/includes/icons/fontawesome-svgs/solid/flask.svg';
-    if(isset($term_meta['application_icon'])){
-      $a_icon = get_stylesheet_directory().'/'.$term_meta['application_icon'];
-      if(file_exists($a_icon) && is_file($a_icon)){
-        $application_icon = $a_icon;
-      }
-    }
-    $app_description = trim(strip_tags(term_description($application->term_id, 'applications')));
-    if($app_description && strlen($app_description)){
-      $app_tooltip = 'data-toggle="tooltip" data-delay=\'{ "show": 1000, "hide": 0 }\' title="'.$app_description.'"';
-    } else {
-      $app_tooltip = '';
-    }
-    $output .= '<div class="homepage-application">
-      <a href="'.$app_url.'" class="app-link" '.$app_tooltip.'>
-        <span class="application-icon">'.file_get_contents($application_icon).'</span>
-        '.$application->name.'
-      </a>
-    </div>';
-  }
-
-  $output .= '</div>'; // .homepage-applications-flexwrap
-  $output .= '</div>'; // #homepage-applications-tabcontent
-
-  //
   // TECHNOLOGIES
-  //
   $output .= '<div class="tab-pane fade" id="homepage-technologies-tabcontent">';
-  $output .= '<div class="homepage-applications-flexwrap">';
+  $output .= do_shortcode('[ngisweden_tabs type=technologies]');
+  $output .= '</div>';
 
-  // TODO - render the technologies here somehow
-
-  $output .= '</div>'; // .homepage-applications-flexwrap
-  $output .= '</div>'; // #homepage-technologies-tabcontent
+  // TECHNOLOGIES
+  $output .= '<div class="tab-pane fade" id="homepage-bioinformatics-tabcontent">';
+  $output .= do_shortcode('[ngisweden_tabs type=bioinformatics]');
+  $output .= '</div>';
 
 
   $output .= '</div>'; // .tab-content
