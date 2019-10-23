@@ -18,7 +18,7 @@ function singlepage_get_application_parents( $id, $visited = array() ) {
 <div class="ngisweden-sidebar-page">
   <div class="container main-page">
     <div class="row">
-      <div class="col-sm-9">
+      <div class="col-sm-9 content-main">
         <?php
         if (have_posts()) {
           while (have_posts()) {

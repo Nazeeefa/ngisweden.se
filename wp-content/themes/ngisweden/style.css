@@ -213,18 +213,18 @@ footer {
 .main-page {
     margin-top: 30px;
 }
-.main-page > .h1,
-.main-page > .h2,
-.main-page > .h3,
-.main-page > .h4,
-.main-page > .h5,
-.main-page > .h6,
-.main-page > h1,
-.main-page > h2,
-.main-page > h3,
-.main-page > h4,
-.main-page > h5,
-.main-page > h6 {
+.main-page > .h1, .content-main .h1,
+.main-page > .h2, .content-main .h2,
+.main-page > .h3, .content-main .h3,
+.main-page > .h4, .content-main .h4,
+.main-page > .h5, .content-main .h5,
+.main-page > .h6, .content-main .h6,
+.main-page > h1, .content-main > h1,
+.main-page > h2, .content-main > h2,
+.main-page > h3, .content-main > h3,
+.main-page > h4, .content-main > h4,
+.main-page > h5, .content-main > h5,
+.main-page > h6, .content-main > h6 {
     margin-top: 2rem;
 }
 
