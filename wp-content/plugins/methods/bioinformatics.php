@@ -33,7 +33,7 @@ function bioinformatics_post_type() {
             'author',
             'revisions'
         ),
-        'taxonomies' => [ 'applications', 'sequencing_type', 'method_keywords', 'method_status' ],
+        'taxonomies' => [ 'applications', 'method_keywords', 'method_status' ],
         # Gutenberg editor config stuff from here on
         'show_in_rest' => true,
         'template' => array(

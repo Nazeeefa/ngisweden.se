@@ -20,7 +20,6 @@ require_once('bioinformatics.php');
 
 // Add in the taxonomies
 require_once('taxonomies/applications.php');
-require_once('taxonomies/seqtype.php');
 require_once('taxonomies/status.php');
 require_once('taxonomies/keywords.php');
 

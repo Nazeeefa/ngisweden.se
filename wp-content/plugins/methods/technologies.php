@@ -1,12 +1,5 @@
 <?php
 
-
-function unregister_tech(){
-    unregister_post_type('technologies');
-}
-add_action('init', 'unregister_tech');
-
-
 /////////////////////////////////////
 // Custom Post Type setup - Technologies
 /////////////////////////////////////
@@ -41,7 +34,7 @@ function technology_post_type() {
             'author',
             'revisions'
         ),
-        'taxonomies' => [ 'applications', 'sequencing_type', 'method_keywords', 'method_status' ],
+        'taxonomies' => [  'method_keywords', 'method_status' ],
         # Gutenberg editor config stuff from here on
         'show_in_rest' => true,
         // 'template' => array(),

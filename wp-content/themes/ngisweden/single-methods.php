@@ -59,15 +59,6 @@ function singlepage_get_application_parents( $id, $visited = array() ) {
               }
             }
 
-            // Sequencing type
-            $method_seqtype_badges = '';
-            $method_seqtypes = get_the_terms(null, 'sequencing_type');
-            if ($method_seqtypes && !is_wp_error($method_seqtypes)){
-              foreach($method_seqtypes as $kw){
-                $method_seqtype_badges .= '<a href="'.get_term_link($kw->slug, 'sequencing_type').'" rel="tag" class="badge badge-info method-keyword '.$kw->slug.'">'.$kw->name.'</a> ';
-              }
-            }
-
             // Application categories
             $method_application_badges = '';
             $method_applications = get_the_terms(null, 'applications');
@@ -81,7 +72,7 @@ function singlepage_get_application_parents( $id, $visited = array() ) {
               }
             }
 
-            echo '<h1>'.$status_icon.get_the_title().'</h1>';
+            echo '<h1>'.get_the_title().'</h1>';
             if(has_excerpt() && get_the_excerpt() and strlen(trim(get_the_excerpt()))){
                 echo '<p class="methods-lead">'.get_the_excerpt().'</p>';
             }
@@ -103,10 +94,6 @@ function singlepage_get_application_parents( $id, $visited = array() ) {
         if($method_keywords && !is_wp_error($method_keywords) && count($method_keywords) > 0){
           echo '<h5 class="mt-3">Keywords</h5>';
           echo $method_keyword_badges;
-        }
-        if($method_seqtypes && !is_wp_error($method_seqtypes) && count($method_seqtypes) > 0){
-          echo '<h5 class="mt-3">Sequencing Methods</h5>';
-          echo $method_seqtype_badges;
         }
 
         // Show associated bioinformatics pipelines
