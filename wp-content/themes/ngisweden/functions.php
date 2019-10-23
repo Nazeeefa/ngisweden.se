@@ -1,16 +1,15 @@
 <?php
 /* NGIsweden Theme Functions */
 
-$ngisweden_theme_version = 0.1;
-
 // Enqueue Bootstrap JS and CSS files
 function ngis_wp_bootstrap_scripts_styles() {
+    $ngisweden_theme = wp_get_theme();
     wp_enqueue_script('popperjs', get_stylesheet_directory_uri().'/includes/js/popper.min.js', array(), '1.14.7', true );
     wp_enqueue_script('bootstrapjs', get_stylesheet_directory_uri().'/includes/js/bootstrap.min.js', array('jquery'), '4.3.1', true );
-    wp_enqueue_script('ngisweden', get_stylesheet_directory_uri().'/ngisweden.js', array('jquery'), $ngisweden_theme_version, true);
+    wp_enqueue_script('ngisweden', get_stylesheet_directory_uri().'/ngisweden.js', array('jquery'), $ngisweden_theme->version, true);
     wp_enqueue_style('bootstrapcss', get_stylesheet_directory_uri().'/includes/css/bootstrap.min.css', array(),'4.3.1');
     wp_enqueue_style('fontawesomecss', get_stylesheet_directory_uri().'/includes/css/fontawesome.all.min.css', array(),'5.8.1');
-    wp_enqueue_style('ngisweden', get_stylesheet_directory_uri().'/style.css', array(), $ngisweden_theme_version);
+    wp_enqueue_style('ngisweden', get_stylesheet_directory_uri().'/style.css', array(), $ngisweden_theme->version);
 }
 add_action('wp_enqueue_scripts', 'ngis_wp_bootstrap_scripts_styles');
 

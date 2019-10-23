@@ -7,7 +7,7 @@ function ngisweden_homepage_applications($atts_raw){
   $output = '<div class="homepage-applications" id="applications-shortcode-div">';
 
   // Print the ajax search lite search form
-  $output .= do_shortcode('[wpdreams_ajaxsearchlite]');
+  // $output .= do_shortcode('[wpdreams_ajaxsearchlite]');
 
   // Tab buttons to switch between applications and technologies
   $output .= '
@@ -17,6 +17,9 @@ function ngisweden_homepage_applications($atts_raw){
     </li>
     <li class="nav-item">
       <a href="#homepage-technologies-tabcontent" class="nav-link btn btn-light" data-toggle="tab" role="tab">Technologies</a>
+    </li>
+    <li class="nav-item">
+      <a href="#" class="nav-link btn btn-light disabled">Bioinformatics</a>
     </li>
   </ul>
   ';

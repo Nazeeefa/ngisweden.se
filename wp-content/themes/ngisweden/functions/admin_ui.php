@@ -47,6 +47,7 @@ function ngisweden_admin_menu_media_down() {
         'index.php',                  // Dashboard
         'edit.php',                   // Posts
         'edit.php?post_type=methods', // Methods
+        'edit.php?post_type=technologies', // Methods
         'edit.php?post_type=bioinformatics', // Methods
         'edit.php?post_type=page',    // Pages
         'edit.php?post_type=cptbc',   // Carousel

@@ -12,6 +12,9 @@ License: MIT
 // Methods post type
 require_once('methods.php');
 
+// Technologies post type
+require_once('technologies.php');
+
 // Bioinformatics post type
 require_once('bioinformatics.php');
 
@@ -21,5 +24,6 @@ require_once('taxonomies/seqtype.php');
 require_once('taxonomies/status.php');
 require_once('taxonomies/keywords.php');
 
-// Link methods and bioinformatics
+// Link methods with technologies and bioinformatics
+require_once('methods_technology_linking.php');
 require_once('methods_bioinfo_linking.php');

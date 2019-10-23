@@ -17,7 +17,10 @@ function bioinformatics_link_metabox_fields() {
     echo '<input type="hidden" name="bioinformatics_nonce" value="'.wp_create_nonce( basename( __FILE__ ) ).'" />';
     echo '<div style="max-height: 200px; overflow-y: scroll;">';
     foreach ( $all_bioinformatics as $bioinfo ){
-        $selected = in_array( $bioinfo->ID, $selected_bioinformatics ) ? ' checked="checked"' : '';
+        $selected = '';
+        if(is_array($selected_bioinformatics) && in_array( $bioinfo->ID, $selected_bioinformatics )){
+            $selected = ' checked="checked"';
+        }
         echo '<div style="margin-bottom: 8px;">';
         echo '<input id="bioinfo_page_link_'.$bioinfo->ID.'" name="bioinformatics[]" type="checkbox" value="'.$bioinfo->ID.'"'.$selected.'>';
         echo '<label for="bioinfo_page_link_'.$bioinfo->ID.'">'.$bioinfo->post_title.'</label>';

@@ -25,7 +25,7 @@ function bioinformatics_post_type() {
         'capability_type' => 'page',
         'has_archive' => true,
         'hierarchical' => false,
-        'menu_position' => 6,
+        'menu_position' => 6.3,
         'supports' => array(
             'title',
             'editor',
