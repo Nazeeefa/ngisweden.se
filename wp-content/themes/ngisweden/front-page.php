@@ -4,12 +4,26 @@
   <div class="container">
     <div class="row align-items-center rounded-lg">
       <div class="col-sm-6">
-        <img src="<?php echo get_stylesheet_directory_uri(); ?>/img/NGI-logo-darkbg.png">
+        <?php
+        if (is_active_sidebar('homepage-header-left')){
+          dynamic_sidebar( 'homepage-header-left');
+        } else {
+          echo '<img src="'.get_stylesheet_directory_uri().'/img/NGI-logo-darkbg.png">';
+        }
+        ?>
       </div>
-      <div class="col-sm-6">
-        <p class="mt-3">NGI is one of SciLifeLab’s largest technical platforms.</p>
-        <p>We provide access to technology for next generation DNA sequencing,
-          genotyping and associated bioinformatics support to researchers based in Sweden.</p>
+      <div class="col-sm-6 pt-3">
+        <?php
+        if (is_active_sidebar('homepage-header-right')){
+          dynamic_sidebar( 'homepage-header-right');
+        } else {
+          echo '
+          <p>NGI is one of SciLifeLab’s largest technical platforms.</p>
+          <p>We provide access to technology for next generation DNA sequencing,
+            genotyping and associated bioinformatics support to researchers based in Sweden.</p>
+          ';
+        }
+        ?>
       </div>
     </div>
   </div>
