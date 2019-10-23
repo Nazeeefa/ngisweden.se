@@ -274,7 +274,16 @@ footer {
     color: #ffffff;
     font-size: 1.25rem;
 }
-.admin-bar .homepage_carousel_overlay img {
+@media all and (max-width: 992px) {
+    .admin-bar .homepage_carousel_overlay {
+        top: 125px;
+    }
+    .homepage_carousel_overlay .container .row {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+.homepage_carousel_overlay img {
     max-width: 100%;
 }
 

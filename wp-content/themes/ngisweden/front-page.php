@@ -3,7 +3,7 @@
 <div class="homepage_carousel_overlay">
   <div class="container">
     <div class="row align-items-center rounded-lg">
-      <div class="col-sm-6">
+      <div class="col-sm-6 py-3">
         <?php
         if (is_active_sidebar('homepage-header-left')){
           dynamic_sidebar( 'homepage-header-left');
@@ -12,7 +12,7 @@
         }
         ?>
       </div>
-      <div class="col-sm-6 pt-3">
+      <div class="col-sm-6 py-3">
         <?php
         if (is_active_sidebar('homepage-header-right')){
           dynamic_sidebar( 'homepage-header-right');
