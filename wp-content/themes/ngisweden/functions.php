@@ -1,6 +1,15 @@
 <?php
 /* NGIsweden Theme Functions */
 
+//////// DEBUG ONLY
+///// REMOVE THIS WHEN THE SITE IS GOING LIVE
+function show_all_draft_pending( $query ) {
+    $query->set('post_status', 'publish,draft,pending');
+}
+add_action('pre_get_posts', 'show_all_draft_pending');
+
+
+
 // Enqueue Bootstrap JS and CSS files
 function ngis_wp_bootstrap_scripts_styles() {
     $ngisweden_theme = wp_get_theme();
