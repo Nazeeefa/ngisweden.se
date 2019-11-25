@@ -270,9 +270,10 @@ footer {
     margin-top: 50px;
     margin-bottom: 50px;
     min-height: 300px;
-    background-color: rgba(30,30,30,0.95);
+    background-color: rgba(30,30,30,0.85);
     color: #ffffff;
     font-size: 1.25rem;
+    border-radius: 1rem;
 }
 @media all and (max-width: 992px) {
     .admin-bar .homepage_carousel_overlay {

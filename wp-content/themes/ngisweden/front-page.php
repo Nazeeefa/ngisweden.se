@@ -2,7 +2,7 @@
 
 <div class="homepage_carousel_overlay">
   <div class="container">
-    <div class="row align-items-center rounded-lg">
+    <div class="row align-items-center">
       <div class="col-sm-6 py-3">
         <?php
         if (is_active_sidebar('homepage-header-left')){
