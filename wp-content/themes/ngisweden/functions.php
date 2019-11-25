@@ -8,7 +8,16 @@ function show_all_draft_pending( $query ) {
 }
 add_action('pre_get_posts', 'show_all_draft_pending');
 
-
+// Make a new user role where people can edit anything but not publish
+function add_roles_on_plugin_activation() {
+    // Get editor capabilities and then edit these
+    $editor_caps = get_role( 'administrator' )->capabilities;
+    $editor_caps['publish_pages'] = false;
+    $editor_caps['publish_posts'] = false;
+    // Make the new role
+    add_role( 'editor_nopublish', 'NGI Editor', $editor_caps );
+}
+register_activation_hook(__FILE__, 'add_roles_on_plugin_activation' );
 
 // Enqueue Bootstrap JS and CSS files
 function ngis_wp_bootstrap_scripts_styles() {
