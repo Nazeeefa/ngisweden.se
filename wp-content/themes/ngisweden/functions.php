@@ -4,9 +4,15 @@
 //////// DEBUG ONLY
 ///// REMOVE THIS WHEN THE SITE IS GOING LIVE
 function show_all_draft_pending( $query ) {
-    // if($query->is_main_query() && !is_admin()){
-        $query->set('post_status', 'publish,draft,pending');
-    // }
+
+    // Don't do this if we're on the admin overview tables,
+    // otherwise we can't filter by post status
+    if(is_admin() && get_current_screen()->base == 'edit'){
+        return;
+    }
+
+    // Return all posts, even if draft or pending
+    $query->set('post_status', 'publish,draft,pending');
 }
 add_action('pre_get_posts', 'show_all_draft_pending');
 
