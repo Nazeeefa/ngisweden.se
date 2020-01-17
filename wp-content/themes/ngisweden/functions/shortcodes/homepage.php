@@ -33,7 +33,7 @@ function ngisweden_homepage_applications($atts_raw){
   $output .= do_shortcode('[ngisweden_tabs type=technologies]');
   $output .= '</div>';
 
-  // TECHNOLOGIES
+  // BIOINFORMATICS
   $output .= '<div class="tab-pane fade" id="homepage-bioinformatics-tabcontent">';
   $output .= do_shortcode('[ngisweden_tabs type=bioinformatics]');
   $output .= '</div>';

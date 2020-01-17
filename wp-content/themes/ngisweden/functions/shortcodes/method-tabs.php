@@ -31,7 +31,8 @@ function ngisweden_method_tabs($atts_raw){
     // Get only top-level posts
     $posts = get_posts( array(
       'post_type' => $atts['type'],
-      'post_parent' => 0
+      'post_parent' => 0,
+      'posts_per_page' => -1
     ) );
 
     foreach($posts as $post){
@@ -68,7 +69,8 @@ function ngisweden_method_tabs($atts_raw){
     $terms = get_terms( array(
       'taxonomy' => $atts['type'],
       'hide_empty' => false,
-      'parent' => 0
+      'parent' => 0,
+      'posts_per_page' => -1
     ) );
 
     foreach($terms as $term){

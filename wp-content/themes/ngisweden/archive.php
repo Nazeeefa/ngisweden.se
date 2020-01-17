@@ -100,7 +100,7 @@
     while (have_posts()) {
       the_post();
 
-      // Skip nested technologies
+      // Skip technologies with no children
       if(get_post_type() == 'technologies' && empty(get_children(get_the_ID()))){
         continue;
       }
