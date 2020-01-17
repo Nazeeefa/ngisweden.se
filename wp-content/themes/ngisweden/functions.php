@@ -4,9 +4,9 @@
 //////// DEBUG ONLY
 ///// REMOVE THIS WHEN THE SITE IS GOING LIVE
 function show_all_draft_pending( $query ) {
-    if($query->is_main_query() && !is_admin()){
+    // if($query->is_main_query() && !is_admin()){
         $query->set('post_status', 'publish,draft,pending');
-    }
+    // }
 }
 add_action('pre_get_posts', 'show_all_draft_pending');
 
@@ -72,6 +72,15 @@ function ngisweden_change_post_object_label() {
     $labels->not_found_in_trash = 'No News found in Trash';
 }
 
+
+// Enqueue a custom javascript file for extending gutenberg
+function ngi_guten_enqueue() {
+    wp_enqueue_script('ngi-gutenberg-extend',
+        get_stylesheet_directory_uri().'/ngi-gutenberg-extend.js',
+        array( 'wp-blocks' )
+    );
+}
+add_action('enqueue_block_editor_assets', 'ngi_guten_enqueue');
 
 // Code to clean up and improve the WordPress admin interface
 require_once('functions/admin_ui.php');

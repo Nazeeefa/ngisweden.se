@@ -227,6 +227,9 @@ footer {
 .main-page > h6, .content-main > h6 {
     margin-top: 2rem;
 }
+.content-main ul li {
+    margin-bottom: 0.5rem;
+}
 
 
 .ngisweden-sidebar-page-sidebar {
