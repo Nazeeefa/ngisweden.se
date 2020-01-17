@@ -42,3 +42,13 @@ function technology_post_type() {
     register_post_type('technologies', $args);
 }
 add_action('init', 'technology_post_type');
+
+// Don't paginate technology archives
+function ngi_technologies_query( $query ){
+    if(!is_admin() // admin pages
+        && $query->is_post_type_archive('technologies')
+        && $query->is_main_query() ){
+            $query->set( 'posts_per_page', -1 );
+    }
+}
+add_action( 'pre_get_posts', 'ngi_technologies_query' );
