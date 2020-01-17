@@ -62,6 +62,8 @@ function applications_taxonomy_custom_fields($tag) {
                 'name' => 'application_page',
                 'show_option_none'  => '[ choose a page ]',
                 'option_none_value' => 0,
+                // Allow any page to be linked, even if a draft
+                'post_status' => [ 'publish', 'draft', 'pending' ],
             ));
             echo $page_link;
             ?>
