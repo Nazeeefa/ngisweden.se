@@ -60,6 +60,7 @@ add_filter( 'menu_order', 'ngisweden_admin_menu_media_down' );
 
 // Remove certain pages from the menu
 function my_remove_menus() {
+    remove_submenu_page('index.php', 'index.php' ); // Default dashboard
     remove_submenu_page('themes.php', 'themes.php' ); // Theme chooser
     remove_submenu_page('themes.php', 'theme-editor.php' ); // Theme editor
     remove_submenu_page('plugins.php', 'plugin-editor.php' ); // Plugin editor
@@ -86,52 +87,30 @@ add_action( 'wp_dashboard_setup', 'remove_dashboard_widgets' );
 remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 
 //
-// Add widget box to help people with documentation
+// Use a totally custom dashboard page
 //
-function ngisweden_dashboard_walkthrough_widget_function() {
-    // TODO: Could probably add more useful stuff here...
-    echo '
-    <p>
-        <a class="button button-primary" style="float:right; margin-bottom: 10px;" href="https://docs.google.com/document/d/1wXarUg1JlxSmDLZwmhZs5ChV1Kq28pV-dBniaASlPWA/edit?usp=sharing" target="_blank">Open docs in new tab</a>
-        Welcome to the NGI website administration area!
-    </p>
-    <iframe style="width:100%; height: 600px;" src="https://docs.google.com/document/d/e/2PACX-1vTty9lSxiX0O9dgNO8v6jEftdxilRH-oVGuTpxLqCR5Ta1IULbIgcDKOvoWa-Hft4RADVxaSJhZYrFa/pub"></iframe>
-    <hr>
-    <p>You can comment / suggest changes on this document <a href="https://docs.google.com/document/d/1wXarUg1JlxSmDLZwmhZs5ChV1Kq28pV-dBniaASlPWA/edit?usp=sharing" target="_blank">here</a>.</p>
-    ';
+
+// Code stolen from https://wordpress.org/plugins/sweet-custom-dashboard/
+add_action('admin_menu', 'ngi_admin_register_menu');
+add_action('load-index.php', 'ngi_admin_redirect_dashboard');
+function ngi_admin_redirect_dashboard() {
+    if( is_admin() ) {
+        $screen = get_current_screen();
+        if( $screen->base == 'dashboard' ) {
+            wp_redirect( admin_url( 'index.php?page=ngi-dashboard' ) );
+        }
+    }
 }
-function ngisweden_dashboard_code_help_widget_function() {
-    // TODO: Could probably add more useful stuff here...
-    echo '<p>Welcome to the NGI website administration area! Quick links for some non-obvious pages:</p>
-    <ul style="list-style: inherit; margin-left: 2rem;">
-        <li><a href="/wp-admin/nav-menus.php">Top navigation menu</a></li>
-        <li><a href="/wp-admin/edit-tags.php?taxonomy=applications&post_type=methods">Method applications</a></li>
-    </ul>
-    <p>The code for the website is available on GitHub: <a href="https://github.com/NationalGenomicsInfrastructure/ngisweden.se/" target="_blank">https://github.com/NationalGenomicsInfrastructure/ngisweden.se/</a></p>
-    ';
-}
-function ngisweden_add_dashboard_widgets() {
-    add_meta_box(
-        'ngisweden_dashboard_walkthrough_widget',
-        'NGI Sweden - Website Documentation',
-        'ngisweden_dashboard_walkthrough_widget_function',
-        'dashboard', 'normal', 'high'
-    );
-    add_meta_box(
-        'ngisweden_dashboard_code_help_widget',
-        'NGI Sweden - Administrators',
-        'ngisweden_dashboard_code_help_widget_function',
-        'dashboard', 'normal', 'default'
+function ngi_admin_register_menu() {
+    add_dashboard_page(
+        'Home',
+        'Home',
+        'read',
+        'ngi-dashboard',
+        'ngi_admin_create_dashboard',
+        0
     );
 }
-add_action( 'wp_dashboard_setup', 'ngisweden_add_dashboard_widgets' );
-
-
-// Force one-column dashboard
-function ngi_admin_dashboard_layout_columns($columns) {
-	$columns['dashboard'] = 1;
-	return $columns;
+function ngi_admin_create_dashboard() {
+    include_once( 'admin_dashboard.php'  );
 }
-add_filter('screen_layout_columns', 'ngi_admin_dashboard_layout_columns');
-function ngi_admin_dashboard_layout() { return 1; }
-add_filter('get_user_option_screen_layout_dashboard', 'ngi_admin_dashboard_layout');
