@@ -265,6 +265,8 @@ footer {
     top: 46px;
     left: 0;
     z-index: 100;
+    box-shadow: 0 .125rem .5rem rgba(0, 0, 0, 0.2);
+
 }
 .admin-bar .homepage_carousel_overlay {
     top: 92px;
