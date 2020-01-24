@@ -21,15 +21,15 @@
     );
     $posts = get_posts(array(
       'author' => get_current_user_id(),
-      'post_type' => array_keys($pcounts)
+      'post_type' => array_keys($pcounts),
+      'post_status' => array('publish', 'pending', 'draft', 'future', 'private', 'inherit'),
+      'posts_per_page' => -1
     ));
     foreach($posts as $post) {
       $pcounts[$post->post_type] += 1;
     }
-    if(isset($posts) && !empty($posts)) {
-      foreach($pcounts as $pt => $pcount){
-        echo '<li><a href="/wp-admin/edit.php?post_type='.$pt.'&author='.get_current_user_id().'">'.ucfirst($pt).' ('.$pcount.')</a></li>';
-      }
+    foreach($pcounts as $pt => $pcount){
+      echo '<li><a href="/wp-admin/edit.php?post_type='.$pt.'&author='.get_current_user_id().'">'.ucfirst($pt).' ('.$pcount.')</a></li>';
     }
     echo '</ul>';
   ?>
