@@ -6,3 +6,7 @@
     font-family: 'Roboto', sans-serif;
     color: #183c55;
 }
+
+.editor-styles-wrapper ul li {
+    margin-bottom: 0.5rem !important;
+}
