@@ -87,17 +87,50 @@ remove_action( 'admin_color_scheme_picker', 'admin_color_scheme_picker' );
 //
 // Add widget box to help people with documentation
 //
-function ngisweden_dashboard_help_widget_function() {
+function ngisweden_dashboard_walkthrough_widget_function() {
     // TODO: Could probably add more useful stuff here...
-    echo '<p>Welcome to the NGI website administration area!</p>';
-    echo '<p>Not sure where to start? <a href="https://github.com/NationalGenomicsInfrastructure/ngisweden.se/blob/master/README.md" target="_blank">Read the documentation on GitHub</a>.</p>';
+    echo '
+    <p>
+        <a class="button button-primary" style="float:right; margin-bottom: 10px;" href="https://docs.google.com/document/d/1wXarUg1JlxSmDLZwmhZs5ChV1Kq28pV-dBniaASlPWA/edit?usp=sharing" target="_blank">Open docs in new tab</a>
+        Welcome to the NGI website administration area!
+    </p>
+    <iframe style="width:100%; height: 600px;" src="https://docs.google.com/document/d/e/2PACX-1vTty9lSxiX0O9dgNO8v6jEftdxilRH-oVGuTpxLqCR5Ta1IULbIgcDKOvoWa-Hft4RADVxaSJhZYrFa/pub"></iframe>
+    <hr>
+    <p>You can comment / suggest changes on this document <a href="https://docs.google.com/document/d/1wXarUg1JlxSmDLZwmhZs5ChV1Kq28pV-dBniaASlPWA/edit?usp=sharing" target="_blank">here</a>.</p>
+    ';
+}
+function ngisweden_dashboard_code_help_widget_function() {
+    // TODO: Could probably add more useful stuff here...
+    echo '<p>Welcome to the NGI website administration area! Quick links for some non-obvious pages:</p>
+    <ul style="list-style: inherit; margin-left: 2rem;">
+        <li><a href="/wp-admin/nav-menus.php">Top navigation menu</a></li>
+        <li><a href="/wp-admin/edit-tags.php?taxonomy=applications&post_type=methods">Method applications</a></li>
+    </ul>
+    <p>The code for the website is available on GitHub: <a href="https://github.com/NationalGenomicsInfrastructure/ngisweden.se/" target="_blank">https://github.com/NationalGenomicsInfrastructure/ngisweden.se/</a></p>
+    ';
 }
 function ngisweden_add_dashboard_widgets() {
     add_meta_box(
-        'ngisweden_dashboard_help_widget',
-        'NGI Sweden - Admin Documentation',
-        'ngisweden_dashboard_help_widget_function',
-        'dashboard', 'side', 'high'
+        'ngisweden_dashboard_walkthrough_widget',
+        'NGI Sweden - Website Documentation',
+        'ngisweden_dashboard_walkthrough_widget_function',
+        'dashboard', 'normal', 'high'
+    );
+    add_meta_box(
+        'ngisweden_dashboard_code_help_widget',
+        'NGI Sweden - Administrators',
+        'ngisweden_dashboard_code_help_widget_function',
+        'dashboard', 'normal', 'default'
     );
 }
 add_action( 'wp_dashboard_setup', 'ngisweden_add_dashboard_widgets' );
+
+
+// Force one-column dashboard
+function ngi_admin_dashboard_layout_columns($columns) {
+	$columns['dashboard'] = 1;
+	return $columns;
+}
+add_filter('screen_layout_columns', 'ngi_admin_dashboard_layout_columns');
+function ngi_admin_dashboard_layout() { return 1; }
+add_filter('get_user_option_screen_layout_dashboard', 'ngi_admin_dashboard_layout');
