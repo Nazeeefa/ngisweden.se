@@ -316,6 +316,9 @@ footer {
     align-items: stretch;
     margin: 1.5rem 0;
 }
+.ngiswden-ajax-search.ngi-tabs {
+    margin: 1.5rem 0;
+}
 .ngisweden-method-tabs .ngisweden-method-tab a,
 .ngiswden-ajax-search.ngi-tabs .wpdreams_asl_container .probox {
     display: block;
@@ -417,6 +420,10 @@ footer {
         margin: -0.5rem;
         margin-left: 1.5rem;
     }
+}
+
+.wpdreams_asl_results.asl_r.vertical {
+    box-shadow: 0 0 10px -1px rgba(0,0,0,.6);
 }
 
 .ngisweden-publications .list-group-item {

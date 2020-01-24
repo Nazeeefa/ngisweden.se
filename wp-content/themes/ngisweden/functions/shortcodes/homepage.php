@@ -38,7 +38,6 @@ function ngisweden_homepage_applications($atts_raw){
   $output .= do_shortcode('[ngisweden_tabs type=bioinformatics]');
   $output .= '</div>';
 
-
   $output .= '</div>'; // .tab-content
   $output .= '</div>'; // #applications-shortcode-div
   return $output;
