@@ -12,7 +12,7 @@ function show_all_draft_pending( $query ) {
     }
 
     // Return all posts, even if draft or pending
-    $query->set('post_status', 'publish,draft,pending');
+    $query->set('post_status', 'publish,pending,draft,auto,future,private,inherit,trash');
 }
 add_action('pre_get_posts', 'show_all_draft_pending');
 
