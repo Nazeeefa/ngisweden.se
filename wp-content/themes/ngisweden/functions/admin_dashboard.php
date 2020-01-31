@@ -1,4 +1,37 @@
-<?php // Custom Dashboard page ?>
+<?php // Custom Dashboard page
+
+// Check if we have any pages that should me in the main menu and are not
+// Get menu page IDs
+$menu_locations = get_nav_menu_locations();
+$menu = wp_get_nav_menu_object($menu_locations['main-nav']);
+$menu_items = wp_get_nav_menu_items($menu->term_id);
+$menu_page_ids = [];
+foreach($menu_items as $menu_item){
+  if($menu_item->object == 'page'){
+    $menu_page_ids[] = $menu_item->object_id;
+  }
+}
+// Get all page IDs
+$ngi_pages = get_pages(array(
+  'hierarchical'=> false,
+  // Exclude pages that are children of 'Applications' or 'Events'
+  'exclude_tree' => [
+    get_page_by_path('applications')->ID,
+    get_page_by_path('news/events')->ID,
+  ],
+  //////// DEBUG ONLY
+  ///// REMOVE THIS WHEN THE SITE IS GOING LIVE
+  'post_status' => 'publish,pending,draft'
+));
+$missing_pages = [];
+foreach($ngi_pages as $ngi_page){
+  if(!in_array($ngi_page->ID, $menu_page_ids)){
+    $missing_pages[] = $ngi_page;
+  }
+}
+
+
+?>
 
 <div class="wrap about-wrap full-width-layout">
 
@@ -33,6 +66,23 @@
     }
     echo '</ul>';
   ?>
+
+  <?php if(count($missing_pages) > 0): ?>
+    <h3>Missing menu pages</h3>
+    <p class="description">
+      Website pages aren't automatically added to the main navigation, they have to be placed in the menu editor.
+      The list below shows pages that are not in the top navigation.
+      This excludes methods, applications, technologies and bioinformatics.
+      <a href="<?php echo admin_url('nav-menus.php'); ?>">Click here to edit the main navigation</a>.
+    </p>
+    <ul style="list-style-type: inherit; margin-left: 2rem;">
+    <?php
+    foreach($missing_pages as $missing_page){
+      echo '<li><a href="'.$missing_page->guid.'">'.$missing_page->post_title.'</a></li>';
+    }
+    ?>
+    </ul>
+  <?php endif; ?>
 
   <h3>
     <a class="button button-primary" style="float:right; margin-bottom: 10px;" href="https://docs.google.com/document/d/1wXarUg1JlxSmDLZwmhZs5ChV1Kq28pV-dBniaASlPWA/edit?usp=sharing" target="_blank">Open docs in new tab</a>

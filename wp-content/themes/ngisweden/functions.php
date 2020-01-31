@@ -41,8 +41,8 @@ add_action('wp_enqueue_scripts', 'ngis_wp_bootstrap_scripts_styles');
 
 // Register navigation menus
 function register_ngisweden_nav() {
-    register_nav_menu('main-nav',__( 'Main Navigation' ));
-    register_nav_menu('secondary-nav',__( 'Secondary Navigation' ));
+    register_nav_menu('main-nav', __( 'Main Navigation' ));
+    register_nav_menu('secondary-nav', __( 'Secondary Navigation' ));
 }
 add_action('init', 'register_ngisweden_nav');
 
