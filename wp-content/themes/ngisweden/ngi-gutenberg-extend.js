@@ -6,8 +6,14 @@
 // Always add the 'table' class to new tables (front end)
 function ngiAddBlockClassNames( props, blockType ) {
     if(blockType.name == 'core/table') {
-        props.children.props.className = 'table table-striped table-bordered';
-        return props;
+        if(props && props.hasOwnProperty('children')){
+            if(props.children && props.children.hasOwnProperty('props')){
+                if(props.children.props && props.children.props.hasOwnProperty('className')){
+                    props.children.props.className = 'table table-striped table-bordered';
+                    return props;
+                }
+            }
+        }
     }
     return props;
 }
