@@ -18,7 +18,8 @@ function ngisweden_pubs_shortcode($atts_raw){
         'title' => 1,
         'randomise' => 1,
         'num' => 5,
-        'collabs' => 0
+        'collabs' => 0,
+        'max_collabs' => -1
     ), $atts_raw);
 
     // Fetch the cached publications data
@@ -70,7 +71,13 @@ function ngisweden_pubs_shortcode($atts_raw){
     $i = 0;
     $num_collabs = 0;
     foreach($pubs_data['publications'] as $pub){
-        // Filter by label if we need to
+
+        // Skip collaborative papers if we already have the maximum number
+        if($atts['max_collabs'] >= 0 && $num_collabs >= $atts['max_collabs'] && $pub['is_collab']){
+            continue;
+        }
+
+        // Skip non-collaborative papers if we need only collabs from here ony
         if($atts['collabs'] > 0){
             $remaining_non_collab = $atts['num'] - $atts['collabs'] - $i;
             if(!$pub['is_collab'] && $remaining_non_collab <= 0){
@@ -83,8 +90,11 @@ function ngisweden_pubs_shortcode($atts_raw){
             break;
         }
 
-        // Bump the counter
+        // Bump the counters
         $i++;
+        if($pub['is_collab']){
+            $num_collabs += 1;
+        }
 
         // Add to the visible list
         $pubs_items[] = '

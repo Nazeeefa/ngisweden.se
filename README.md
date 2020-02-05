@@ -280,7 +280,7 @@ Use the following shortcode:
 ```
 
 Arguments:
-* `title` - Show or hide the title above the list
+* `title` - Show or hide the default _"User Publications"_ heading above the list
     * `0` to disable, `1` to enable. Default: `1`
 * `randomise` - Randomise the list, or show the most recent
     * `0` to leave sorted, `1` to randomise. Default: `1`
@@ -290,11 +290,21 @@ Arguments:
     * Any number. Default `0`
     * If >= `num`, will show only collabs.
     * If fewer collabs than `num` exist, list will be shorter than `num`
+* `max_collabs` - _Maximum_ number of publications that should be collaborations
+    * Any number. Default `-1`
+    * If less than 0, no maximum limit will be applied
+    * If set to 0 then list will not contain any collaborative publications
 
-For example, to show a sorted list with the 10 latest collaboration papers and no title:
+For example, to show a sorted list with the 10 latest collaboration papers and no _User Publications_ heading:
 
 ```
 [ngisweden_publications title=0 randomise=0 num=10 collabs=10]
+```
+
+To show a random list of 20 non-collaborative papers:
+
+```
+[ngisweden_publications num=20 collabs=0]
 ```
 
 ### Homepage application launcher
