@@ -41,9 +41,10 @@ function ngisweden_pubs_shortcode($atts_raw){
 
         // Clean up
         $pub_ids = array();
+        $dois = array();
         foreach($pubs_data['publications'] as $idx => $pub){
-            // Remove duplicates
-            if(in_array($pub['iuid'], $pub_ids)){
+            // Remove duplicates - from parallel facilities and dup DOIs in publications.scilifelab.se
+            if(in_array($pub['iuid'], $pub_ids) || in_array($pub['doi'], $dois)){
                 unset($pubs_data['publications'][$idx]);
                 continue;
             }
