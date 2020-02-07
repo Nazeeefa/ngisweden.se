@@ -148,9 +148,15 @@ function ngisweden_pubs_shortcode($atts_raw){
         }
 
         // Only show modal body if we have an abstract
-        $abstract = '';
+        $footer_border = '';
         if($pub['abstract']){
             $abstract = '<div class="modal-body small">'.$pub['abstract'].'</div>';
+        } else {
+            // Due to a bootstrap bug, we need a modal-body element https://github.com/twbs/bootstrap/issues/28906
+            // So just hide it if empty
+            $abstract = '<div class="modal-body d-none"></div>';
+            // If it's hidden we get a double border from the footer-header, so need to hide one
+            $footer_border = 'border-0';
         }
         $modals .= '
         <div class="modal fade" id="pub_'.$pub['iuid'].'" tabindex="-1" role="dialog" aria-hidden="true">
@@ -165,7 +171,7 @@ function ngisweden_pubs_shortcode($atts_raw){
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               '.$abstract.'
-              <div class="modal-footer">
+              <div class="modal-footer '.$footer_border.'">
                 <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Close</button>
                 <a href="https://www.ncbi.nlm.nih.gov/pubmed/'.$pub['pmid'].'" target="_blank" class="btn btn-sm btn-info">Pubmed <i class="fas fa-external-link-alt fa-sm ml-2"></i></a>
                 <a href="https://dx.doi.org/'.$pub['doi'].'" target="_blank" class="btn btn-sm btn-primary">DOI <i class="fas fa-external-link-alt fa-sm ml-2"></i></a>
