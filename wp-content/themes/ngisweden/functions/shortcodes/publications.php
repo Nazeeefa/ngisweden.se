@@ -49,6 +49,7 @@ function ngisweden_pubs_shortcode($atts_raw){
                 continue;
             }
             array_push($pub_ids, $pub['iuid']);
+            array_push($dois, $pub['doi']);
 
             // Check if this is a collaboration
             $pubs_data['publications'][$idx]['is_collab'] = false;
