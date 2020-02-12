@@ -535,3 +535,11 @@ footer {
 .ribbon.ribbon-orange span { background: linear-gradient(#F79E05 0%, #8F5408 100%); }
 .ribbon.ribbon-orange span::before { border-left: 3px solid #8F5408; border-top: 3px solid #8F5408; }
 .ribbon.ribbon-orange span::after { border-right: 3px solid #8F5408; border-top: 3px solid #8F5408; }
+
+
+/* Gutenberg Stackable CSS overrides */
+/* Feature grid and Team Member cards - less padding */
+.ugb-feature-grid.ugb-feature-grid--v2:not(.ugb-feature-grid--design-plain) .ugb-feature-grid__item,
+.ugb-team-member.ugb-team-member--v3.ugb-team-member--design-basic .ugb-team-member__item {
+    padding: 30px 25px;
+}
