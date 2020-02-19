@@ -31,7 +31,8 @@ function method_post_type() {
             'editor',
             'excerpt',
             'author',
-            'revisions'
+            'revisions',
+            'page-attributes'
         ),
         'taxonomies' => [ 'applications', 'method_keywords', 'method_status' ],
         # Gutenberg editor config stuff from here on
