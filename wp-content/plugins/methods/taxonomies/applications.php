@@ -116,3 +116,13 @@ function applications_pageurl_column_content( $value, $column_name, $tax_id ){
     }
 }
 add_action( "manage_applications_custom_column", 'applications_pageurl_column_content', 10, 3);
+
+
+// Sort archive taxonomy pages by the order flag, instead of date
+add_action( 'pre_get_posts', 'ngi_archive_change_sort_order');
+function ngi_archive_change_sort_order($query){
+    if(is_tax('applications')){
+        $query->set( 'order', 'ASC' );
+        $query->set( 'orderby', 'menu_order title' );
+    }
+};
