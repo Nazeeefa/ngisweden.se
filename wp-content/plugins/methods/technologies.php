@@ -43,12 +43,13 @@ function technology_post_type() {
 }
 add_action('init', 'technology_post_type');
 
-// Don't paginate technology archives
+// Don't paginate archives
 function ngi_technologies_query( $query ){
-    if(!is_admin() // admin pages
-        && $query->is_post_type_archive('technologies')
-        && $query->is_main_query() ){
-            $query->set( 'posts_per_page', -1 );
+    if(!is_admin() && $query->is_post_type_archive('technologies') && $query->is_main_query() ){
+        $query->set( 'posts_per_page', -1 );
+        // Sort by given order, then title
+        $query->set( 'order', 'ASC' );
+        $query->set( 'orderby', 'menu_order title' );
     }
 }
 add_action( 'pre_get_posts', 'ngi_technologies_query' );

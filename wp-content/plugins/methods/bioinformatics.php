@@ -59,10 +59,11 @@ add_action('init', 'bioinformatics_post_type');
 
 // Don't paginate technology archives
 function ngi_bioinformatics_query( $query ){
-    if(!is_admin() // admin pages
-        && $query->is_post_type_archive('bioinformatics')
-        && $query->is_main_query() ){
-            $query->set( 'posts_per_page', -1 );
+    if(!is_admin() && $query->is_post_type_archive('bioinformatics') && $query->is_main_query() ){
+        $query->set( 'posts_per_page', -1 );
+        // Sort by given order, then title
+        $query->set( 'order', 'ASC' );
+        $query->set( 'orderby', 'menu_order title' );
     }
 }
 add_action( 'pre_get_posts', 'ngi_bioinformatics_query' );

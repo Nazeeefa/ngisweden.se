@@ -78,7 +78,6 @@ function ngisweden_change_post_object_label() {
     $labels->not_found_in_trash = 'No News found in Trash';
 }
 
-
 // Enqueue a custom javascript file for extending gutenberg
 function ngi_guten_enqueue() {
     wp_enqueue_script('ngi-gutenberg-extend',
