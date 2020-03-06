@@ -160,6 +160,9 @@
   // Print the title and introduction
   echo '<h1>'.$page_title.'</h1>';
   echo $page_intro;
+  
+  // Echo the rest of the page contents
+  echo $page_contents;
 
   // Print the tab headers
   echo '<div class="row mt-3 mb-3"><div class="col-sm-2 mb-3"><div class="nav flex-column nav-pills" role="tablist" aria-orientation="vertical">';
@@ -201,9 +204,6 @@
     }
   }
   echo '</div></div></div>';
-
-  // Echo the rest of the page contents
-  echo $page_contents;
 
   ?>
 
